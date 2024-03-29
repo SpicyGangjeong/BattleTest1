@@ -14,7 +14,8 @@ public class ATile : MonoBehaviour
     public int gCost;
     public int hCost;
     public ATile parentTile;
-    
+    public int coordi_X;
+    public int coordi_Y;
     public int fCost
     {
         get { return gCost + hCost; }
@@ -34,7 +35,12 @@ public class ATile : MonoBehaviour
         {
 
         }
-    }    
+    }
+    private void Update()
+    {
+        coordi_X = coordinate.X;
+        coordi_Y = coordinate.Y;
+    }
     public void setTileEnv(Types.TileState TileState, Types.TileType TileType)
     {
         tileState = TileState;

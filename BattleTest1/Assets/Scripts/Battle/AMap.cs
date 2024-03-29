@@ -37,10 +37,17 @@ public class AMap : MonoBehaviour
         {
             for (int y = -1; y <= 1; y++)
             {
-                if (x == -1 && (y == -1 || y == 1)) continue; // 육각타일은 건너갈 수 없는 위치 제외
                 if (x == 0 && y == 0) continue; // 자기 위치 제외
 
                 tile.getCoordinate(out int checkX, out int checkY);
+                if (checkY % 2 == 0 && (x == -1 && (y == -1 || y == 1))) // 육각타일은 건너갈 수 없는 위치 제외
+                {
+                    continue;
+                }
+                else if (checkY % 2 == 1 && (x == 1 && (y == -1 || y == 1)))
+                {
+                    continue;
+                }
                 checkX += x;
                 checkY += y;
 
@@ -50,6 +57,12 @@ public class AMap : MonoBehaviour
                 }
             }
         }
+        string str = "";
+        for (int i= 0; i < neighbours.Count; i++)
+        {
+            str += neighbours[i];
+        }
+        Debug.Log(tile + " " + str);
         return neighbours;
     }
 }
