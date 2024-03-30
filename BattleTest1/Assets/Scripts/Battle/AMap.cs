@@ -14,15 +14,15 @@ public class AMap : MonoBehaviour
 
     void Start()
     {
-        Tiles = new GameObject[transform.childCount / 8, transform.childCount / 8];
-        for (int y = 0; y < transform.childCount / 8; y++) // 타일 배열 담기
+        Tiles = new GameObject[9, 10];
+        for (int y = 0; y < transform.childCount / 9; y++) // 타일 배열 담기
         {
-           for (int x = 0; x < transform.childCount / 8; x++)
+           for (int x = 0; x < transform.childCount / 10; x++)
             {
-                Tiles[x,y] = transform.GetChild(y * 8 + x).gameObject;
+                Tiles[x,y] = transform.GetChild(y * 9 + x).gameObject;
                 ATile tileController = Tiles[x, y].GetComponent<ATile>();
                 tileController.setCoordinate(x, y);
-                if ( 1 <= x && x <=6 && y !=0 && y != 7 )
+                if ( 1 <= x && x <=7 && y !=0 && y != 9 )
                     tileController.setTileEnv(Types.TileState.Open, Types.TileType.Dry);
                 else
                     tileController.setTileEnv(Types.TileState.Block, Types.TileType.Dry);

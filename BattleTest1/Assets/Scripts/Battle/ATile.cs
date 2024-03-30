@@ -27,7 +27,7 @@ public class ATile : MonoBehaviour
         Halo = HaloCenter.transform.GetChild(0).gameObject;
         if (tileState == Types.TileState.Block)
         {
-            transform.position = new Vector3(0f, 1f, 0f) + transform.position;
+            transform.position = transform.position + new Vector3(0f, 1f, 0f);
             MaterialTools.SetTransparency(Halo.transform, false);
             MaterialTools.SetTransparency(HaloCenter.transform, false);
         }
@@ -35,6 +35,7 @@ public class ATile : MonoBehaviour
         {
 
         }
+
     }
     private void Update()
     {
