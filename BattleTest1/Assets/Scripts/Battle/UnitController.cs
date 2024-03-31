@@ -5,56 +5,33 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour
 {
-    public ATile currentTile;
-    public ATile targetTile;
-    public GameObject startPos;
-    public GameObject endPos;
-    public AMap Map;
+    public Tile currentTile;
+    public Tile targetTile;
+    public Transform target;
+    public GameObject StartObject;
+    public GameObject DestObject;
+    float lineSize = 30.0f;
     float speed = 20;
+    Tile[] path;
     int targetIndex;
-    ATile[] path = null;
-    public float lineSize = 16f;
+
     void Start()
     {
-        startPos.transform.position = currentTile.transform.position + new Vector3(0f, 2f, 0f);
-        endPos.transform.position = targetTile.transform.position + new Vector3(0f, 2f, 0f);
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(transform.position, -transform.up, lineSize);
 
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
+        for (int i = 0; i < hits.Length; i++)
         {
-            foreach(Transform tileTransform in Map.transform)
-            {
-                tileTransform.GetComponent<ATile>().gCost = 0;
-                tileTransform.GetComponent<ATile>().hCost = 0;
-                tileTransform.GetComponent<ATile>().parentTile = null;
-            }
-            path = null;
-            PathRequestManager.RequestPath(currentTile, targetTile, OnPathFound);
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit[] hits = Physics.RaycastAll(ray);
-            for (int i = 0; i < hits.Length; i++)
-            {
-                RaycastHit hit = hits[i];
+            RaycastHit hit = hits[i];
 
-                if (hit.collider.gameObject.name.Contains("Tile"))
-                {
-                    currentTile = targetTile;
-                    transform.position = currentTile.transform.position + new Vector3(0f, 2f, 0f);
-                    targetTile = hit.collider.transform.GetComponent<ATile>();
-                    startPos.transform.position = currentTile.transform.position + new Vector3(0f, 2f, 0f);
-                    endPos.transform.position = targetTile.transform.position + new Vector3(0f, 2f, 0f);
-                    break;
-                }
+            if (hit.collider.gameObject.name.Contains("Tile"))
+            {
+                currentTile = hit.collider.transform.GetComponent<Tile>();
             }
         }
     }
 
-    private void OnPathFound(ATile[] newPath, bool pathSuccessful)
+    private void OnPathFound(Tile[] newPath, bool pathSuccessful)
     {
         if (pathSuccessful)
         {
@@ -63,20 +40,13 @@ public class UnitController : MonoBehaviour
             StartCoroutine(FollowPath());
         }
     }
-
     IEnumerator FollowPath()
     {
-        ATile currentWaypoint = path[0];
+        Tile currentWaypoint = path[0];
         targetIndex = 0;
-        string str = "UnitPath: ";
-        for (int i = 0; i < path.Length; i++)
-        {
-            str += path[i] + "\n";
-        }
-        Debug.Log(str);
         while (true)
         {
-            if (transform.position == currentWaypoint.transform.position + new Vector3(0f, 2f, 0f))
+            if (transform.position == currentWaypoint.transform.position + Vector3.up * 2)
             {
                 targetIndex++;
                 if(targetIndex >= path.Length)
@@ -85,27 +55,51 @@ public class UnitController : MonoBehaviour
                 }
                 currentWaypoint = path[targetIndex];
             }
-            transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.transform.position + new Vector3(0f,2f,0f), speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.transform.position + Vector3.up * 2, speed * Time.deltaTime);
             yield return null;
+        }
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            path = null;
+            PathRequestManager.RequestPath(currentTile, targetTile, OnPathFound);
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit[] hits;
+            hits = Physics.RaycastAll(ray, lineSize);
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].collider.name.Contains("Tile"))
+                {
+                    targetTile = hits[i].collider.transform.GetComponent<Tile>();
+                    DestObject.transform.position = targetTile.transform.position + Vector3.up * 2;
+                    setCurrentTile();
+                    break;
+                }
+            }
+
+        }
+    }
+    private void setCurrentTile()
+    {
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(transform.position, -transform.up, lineSize);
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            RaycastHit hit = hits[i];
+
+            if (hit.collider.gameObject.name.Contains("Tile"))
+            {
+                currentTile = hit.collider.transform.GetComponent<Tile>();
+                StartObject.transform.position = currentTile.transform.position;
+            }
         }
     }
 }
-/*
- * 
-        string str = "UnitPath: ";
-        for (int i = 0; i < path.Length; i++)
-        {
-            str += path[i] + "\n";
-        }
-        Debug.Log(str);
- * 
-            // Debug.Log(transform.position + " " + (currentWaypoint.transform.position + new Vector3(0f, 2f, 0f)));
-            // Debug.Log((transform.position == currentWaypoint.transform.position + new Vector3(0f, 2f, 0f)));
-            // Debug.Log((transform.position - currentWaypoint.transform.position + new Vector3(0f, 2f, 0f)).magnitude);
- * 
- * 
- * 
- * 
- * 
- * 
- */

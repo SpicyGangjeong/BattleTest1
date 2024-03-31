@@ -18,7 +18,7 @@ public class EnvController : MonoBehaviour
 
             if (hit.collider.gameObject.name.Contains("Tile"))
             {
-                hit.collider.transform.GetComponent<ATile>().tileState = Types.TileState.Block;
+                hit.collider.transform.GetComponent<Tile>().tileState = Types.TileState.Block;
             }
         }
     }
