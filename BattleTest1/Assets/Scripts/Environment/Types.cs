@@ -2,6 +2,13 @@ using System.Collections.Generic;
 
 public class Types
 {
+    public enum SkillType
+    {
+        Scope,
+        Single,
+        Buff,
+
+    }
     public enum RoomType
     {
         Boss,
