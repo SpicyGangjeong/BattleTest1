@@ -2,6 +2,28 @@ using System.Collections.Generic;
 
 public class Types
 {
+    public enum UnitType
+    {
+        Master,
+        Knight,
+        Archer,
+        Mage,
+        Monster,
+    }
+    public enum UnitFaction
+    {
+        Human,
+        Elf,
+        Evil,
+    }
+    public enum UnitJob
+    {
+        Knight,
+        Archer,
+        Mage,
+        Skeleton,
+
+    }
     public enum SkillType
     {
         Scope,
