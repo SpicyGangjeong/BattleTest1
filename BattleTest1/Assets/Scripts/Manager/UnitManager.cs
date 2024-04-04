@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class UnitManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    StatManager statManager;
+    Types.UnitCode unitCode;
+    public UnitManager(Types.UnitCode unitCode)
+    {
+        this.unitCode = unitCode;
+    }
     void Start()
     {
-        
+        statManager = transform.GetComponent<StatManager>();
+        statManager.setStats(Types.UnitCode.Lorien);
     }
 
-    // Update is called once per frame
     void Update()
     {
         

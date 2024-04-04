@@ -2,6 +2,14 @@ using System.Collections.Generic;
 
 public class Types
 {
+    public enum UnitCode
+    {
+        Valdric = 100,
+        Lorien = 101,
+        Thalador = 102,
+        SkeletonWarrior = 200,
+        SkeletonArcher = 201,
+    }
     public enum UnitType
     {
         Master,
