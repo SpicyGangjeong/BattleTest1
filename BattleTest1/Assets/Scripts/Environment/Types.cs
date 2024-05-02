@@ -23,6 +23,8 @@ public class Types
         Human,
         Elf,
         Evil,
+        Relic,
+        Consumable,
     }
     public enum UnitJob
     {
@@ -30,7 +32,20 @@ public class Types
         Archer,
         Mage,
         Skeleton,
+        Relic,
+        Consumable,
 
+    }
+    public enum UnitRarity
+    {
+        Common,
+        Uncommon,
+        Rare,
+        Epic,
+        Legend,
+        Relic,
+        Equipment,
+        Consumable,
     }
     public enum SkillType
     {
@@ -59,8 +74,19 @@ public class Types
     {
         Block,
         Open,
-
     }
+    public Dictionary<UnitRarity, int> DeckTables = new Dictionary<UnitRarity, int>
+    { //TODO
+        { UnitRarity.Common, 100 },
+        { UnitRarity.Uncommon, 100 },
+        { UnitRarity.Rare, 100 },
+        { UnitRarity.Epic, 100 },
+        { UnitRarity.Legend, 100 },
+        { UnitRarity.Relic, 100 },
+        { UnitRarity.Equipment, 100 },
+        { UnitRarity.Consumable, 100 },
+    };
+
     public Dictionary<RoomType, int> EncounterPairs = new Dictionary<RoomType, int>
     {
         { RoomType.Boss, 0 },

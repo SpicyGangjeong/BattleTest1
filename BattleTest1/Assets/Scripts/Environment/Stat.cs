@@ -5,6 +5,7 @@ public class Stat
     public Types.UnitType unitType;
     public Types.UnitJob job;
     public Types.UnitFaction faction;
+    public Types.UnitRarity rarity;
     public string unitName;
     public int star;
     public int maxHp;
@@ -17,7 +18,6 @@ public class Stat
     public int skillRange;
     public int meleeGuard;
     public int sorceryGuard;
-    public int rarity;
     public int criticalChance;
     public int criticalMagnification;
     public float meleeSpeed;
