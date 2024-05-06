@@ -6,7 +6,10 @@ public class ConsumableItem : Item
     int cost;
     Types.UnitFaction faction;
     Types.UnitJob job;
+    public ConsumableItem(int itemId)
+    {
 
+    }
     public void setItem(Types.UnitFaction faction, Types.UnitJob job, int cost)
     {
         throw new System.NotImplementedException();

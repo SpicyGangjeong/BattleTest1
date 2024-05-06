@@ -15,7 +15,39 @@ public class WeightedRandomPicker<T>
         items.Add(item);
         weights.Add(weight);
     }
-
+    public void AddOrSetItem(T item, int weight)
+    {
+        int index = items.IndexOf(item);
+        if (index != -1)
+        {
+            weights[index] = weight;
+            return;
+        }
+        items.Add(item);
+        weights.Add(weight);
+    }
+    public void RemoveItem(T item)
+    {
+        int index = items.IndexOf(item);
+        if (index != -1)
+        {
+            items.RemoveAt(index);
+            weights.RemoveAt(index);
+        }
+    }
+    public void SetItem(T item, int weight)
+    {
+        if (weight == 0)
+        {
+            RemoveItem(item);
+            return;
+        }
+        int index = items.IndexOf(item);
+        if (index != -1)
+        {
+            weights[index] = weight;
+        }
+    }
     public T PickRandom()
     {
         int totalWeight = 0;
