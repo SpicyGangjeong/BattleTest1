@@ -28,4 +28,8 @@ public class ConsumableItem : Item
     {
         return job;
     }
+    public string getName()
+    {
+        return "";
+    }
 }

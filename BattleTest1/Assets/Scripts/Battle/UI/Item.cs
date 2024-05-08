@@ -8,4 +8,5 @@ public interface Item
     int getCost();
     Types.UnitFaction getFaction();
     Types.UnitJob getJob();
+    string getName();
 }

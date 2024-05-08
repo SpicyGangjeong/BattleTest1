@@ -30,4 +30,8 @@ public class RelicItem : Item
     {
         return job;
     }
+    public string getName()
+    {
+        return "";
+    }
 }

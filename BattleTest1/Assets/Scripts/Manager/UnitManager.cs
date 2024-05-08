@@ -13,7 +13,7 @@ public class UnitManager : MonoBehaviour
     void Start()
     {
         statManager = transform.GetComponent<StatManager>();
-        statManager.setStats(Types.UnitCode.Lorien);
+        // statManager.setStats(Types.UnitCode.Lorien);
     }
 
     void Update()

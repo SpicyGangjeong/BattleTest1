@@ -70,4 +70,8 @@ public class UnitItem : Item
     {
         return job;
     }
+    public string getName()
+    {
+        return unitStat.unitName;
+    }
 }

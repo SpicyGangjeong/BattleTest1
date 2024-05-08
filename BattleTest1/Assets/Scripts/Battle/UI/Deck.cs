@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -83,7 +84,7 @@ public class Deck
         Types types = new Types();
         if (types.DrawTable.TryGetValue(unitRarity, out int[] itemIds))
         {
-            int randomIndex = Random.Range(0, itemIds.Length);
+            int randomIndex = UnityEngine.Random.Range(0, itemIds.Length);
             itemId = itemIds[randomIndex];
         }
         switch (unitRarity)

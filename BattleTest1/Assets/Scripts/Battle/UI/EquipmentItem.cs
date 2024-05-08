@@ -29,4 +29,8 @@ public class EquipmentItem : Item
     {
         return job;
     }
+    public string getName()
+    {
+        return "";
+    }
 }

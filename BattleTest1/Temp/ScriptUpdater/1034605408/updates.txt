@@ -1,0 +1,1 @@
+Temp/ScriptUpdater/1034605408\1679892659_ItemListManager.cs => Assets/Scripts/Battle/UI/ItemListManager.cs
