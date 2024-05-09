@@ -33,4 +33,8 @@ public class EquipmentItem : Item
     {
         return "";
     }
+    public Stat getStat()
+    {
+        return null;
+    }
 }

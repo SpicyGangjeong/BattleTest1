@@ -74,4 +74,8 @@ public class UnitItem : Item
     {
         return unitStat.unitName;
     }
+    public Stat getStat()
+    {
+        return null;
+    }
 }

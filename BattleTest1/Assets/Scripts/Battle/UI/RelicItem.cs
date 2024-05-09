@@ -34,4 +34,7 @@ public class RelicItem : Item
     {
         return "";
     }
+    public Stat getStat() {
+        return null;
+    }
 }

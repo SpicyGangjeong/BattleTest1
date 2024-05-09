@@ -9,4 +9,5 @@ public interface Item
     Types.UnitFaction getFaction();
     Types.UnitJob getJob();
     string getName();
+    Stat getStat();
 }

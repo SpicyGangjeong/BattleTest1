@@ -32,4 +32,8 @@ public class ConsumableItem : Item
     {
         return "";
     }
+    public Stat getStat()
+    {
+        return null;
+    }
 }

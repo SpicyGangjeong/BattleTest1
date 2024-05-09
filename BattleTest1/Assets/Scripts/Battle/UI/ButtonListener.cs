@@ -13,11 +13,10 @@ public class ButtonListener : MonoBehaviour
 
     public void OnRerollButtonClicked()
     {
-
+        
     }
-    public void OnItemButtonClicked()
+    public static void OnItemButtonClicked()
     {
 
-        this.OnRerollButtonClicked();
     }
 }
