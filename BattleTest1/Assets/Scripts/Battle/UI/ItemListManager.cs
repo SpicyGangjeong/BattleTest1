@@ -11,7 +11,6 @@ using UnityEngine.UI;
 
 public class ItemListManager : MonoBehaviour
 {
-    static int level;
     public static List<Item> itemList = new List<Item>(5);
     public static List<GameObject> itemPanelList = new List<GameObject>(5);
     GameObject itemPrefab;
@@ -19,14 +18,28 @@ public class ItemListManager : MonoBehaviour
 
     [SerializeField]
     public DeckManager deckManager;
+    [SerializeField]
+    public static int level;
 
     public void Start()
     {
         itemPrefab = Resources.Load("Prefabs/BattleScene/Item") as GameObject;
         horizontalLayoutGroup = transform.GetComponent<HorizontalLayoutGroup>();
-        level = 0;
-        deckManager.deck.setDeck(level);
+        LevelUp();
         Reroll();
+    }
+    public void LevelUp()
+    {
+        Debug.Log("LevelUp To " + level);
+        if (level == null)
+        {
+            level = 0;
+        }
+        else
+        {
+            level++;
+        }
+        deckManager.deck.setDeck(level);
     }
     public void Reroll()
     {
@@ -65,7 +78,7 @@ public class ItemListManager : MonoBehaviour
             {
                 Debug.Log("Item Cast Error");
             }
-            itemPanel.transform.parent = transform;
+            itemPanel.transform.SetParent(transform);
             itemPanel.GetComponent<ItemController>().item = item; ;
             itemPanel.SetActive(true);
 

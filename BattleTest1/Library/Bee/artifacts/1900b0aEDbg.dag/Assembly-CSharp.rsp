@@ -380,6 +380,7 @@
 "Assets/Scripts/Battle/UI/Decks.cs"
 "Assets/Scripts/Battle/UI/EquipmentItem.cs"
 "Assets/Scripts/Battle/UI/Item.cs"
+"Assets/Scripts/Battle/UI/ItemController.cs"
 "Assets/Scripts/Battle/UI/ItemListManager.cs"
 "Assets/Scripts/Battle/UI/RelicItem.cs"
 "Assets/Scripts/Battle/UI/UIManager.cs"
