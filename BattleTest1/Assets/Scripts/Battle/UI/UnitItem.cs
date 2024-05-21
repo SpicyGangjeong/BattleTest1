@@ -78,4 +78,10 @@ public class UnitItem : Item
     {
         return null;
     }
+    public GameObject loadItem()
+    {
+        // TODO 유닛 이름이든 코드든 써서 prefab에 해당하는 객체로 인스탄시에이트 해야함
+        GameObject itemObject = Resources.Load<GameObject>("Prefabs/BattleScene/DummyUnit");
+        return itemObject;
+    }
 }

@@ -1595,7 +1595,7 @@ GameObject:
   - component: {fileID: 6609428856781693460}
   - component: {fileID: 6609428856781693461}
   m_Layer: 0
-  m_Name: 2Handed Warrior
+  m_Name: DummyUnit
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

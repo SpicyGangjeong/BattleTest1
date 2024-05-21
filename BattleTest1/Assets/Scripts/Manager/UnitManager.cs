@@ -6,6 +6,7 @@ public class UnitManager : MonoBehaviour
 {
     StatManager statManager;
     Types.UnitCode unitCode;
+    UnitItem unitItem;
     public UnitManager(Types.UnitCode unitCode)
     {
         this.unitCode = unitCode;

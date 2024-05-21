@@ -13,6 +13,8 @@ public class ItemController : MonoBehaviour
     GameObject itemJob;
     GameObject itemName;
     public Item item;
+    [SerializeField]
+    public GameObject aMap;
     void Start()
     {
         itemListPanel = transform.parent.gameObject;
@@ -34,14 +36,27 @@ public class ItemController : MonoBehaviour
 
     public void Purchase()
     {
-        if (itemListPanel.GetComponent<HorizontalLayoutGroup>().enabled) 
-            itemListPanel.GetComponent<HorizontalLayoutGroup>().enabled = false;
-        List<GameObject> itemPanelList = ItemListManager.itemPanelList;
-        for (int i = 0; i < itemPanelList.Count; i++)
+        Boolean isPlacable = false;
+        for (int i = 0; i < AMap.unitList.Length; i++)
         {
-            if (itemPanelList[i].GetInstanceID() == gameObject.GetInstanceID())
+            if (AMap.unitList[i] == null)
             {
-                gameObject.SetActive(false);
+                isPlacable = true;
+                break;
+            }
+        }
+        if (isPlacable)
+        {
+            int isSuccess = AMap.placeItem((UnitItem)item);
+            if (itemListPanel.GetComponent<HorizontalLayoutGroup>().enabled)
+                itemListPanel.GetComponent<HorizontalLayoutGroup>().enabled = false;
+            List<GameObject> itemPanelList = ItemListManager.itemPanelList;
+            for (int i = 0; i < itemPanelList.Count; i++)
+            {
+                if (itemPanelList[i].GetInstanceID() == gameObject.GetInstanceID())
+                {
+                    gameObject.SetActive(false);
+                }
             }
         }
     }
