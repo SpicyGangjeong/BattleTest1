@@ -61,4 +61,8 @@ public class AMap : MonoBehaviour
         return neighbours;
     }
 
+    public void placeItem()
+    {
+
+    }
 }

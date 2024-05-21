@@ -370,6 +370,7 @@
 "Assets/Scripts/Battle/Factory/UnitFactory.cs"
 "Assets/Scripts/Battle/Field/AMap.cs"
 "Assets/Scripts/Battle/Field/ATile.cs"
+"Assets/Scripts/Battle/Field/NewEditorScript1.cs"
 "Assets/Scripts/Battle/Field/PathFinding.cs"
 "Assets/Scripts/Battle/Field/PathRequestManager.cs"
 "Assets/Scripts/Battle/Field/Tile.cs"

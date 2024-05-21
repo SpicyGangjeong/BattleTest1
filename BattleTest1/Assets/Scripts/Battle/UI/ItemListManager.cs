@@ -16,6 +16,9 @@ public class ItemListManager : MonoBehaviour
     GameObject itemPrefab;
     HorizontalLayoutGroup horizontalLayoutGroup;
 
+    public static GameObject[] UnitList = new GameObject[9];
+    public static GameObject[] ItemList = new GameObject[9];
+
     [SerializeField]
     public DeckManager deckManager;
     [SerializeField]

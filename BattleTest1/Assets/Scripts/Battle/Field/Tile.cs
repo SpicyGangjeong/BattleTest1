@@ -20,8 +20,7 @@ public class Tile : MonoBehaviour
         if (tileState == Types.TileState.Block)
         {
             transform.position = transform.position + new Vector3(0f, 1f, 0f);
-            MaterialTools.SetTransparency(Halo.transform, false);
-            MaterialTools.SetTransparency(HaloCenter.transform, false);
+            AlterHaloAndCenterVisible(false);
         }
         else
         {
@@ -49,7 +48,11 @@ public class Tile : MonoBehaviour
         x = coordinate.X;
         y = coordinate.Y;
     }
-
+    public void AlterHaloAndCenterVisible(bool value)
+    {
+        MaterialTools.SetTransparency(Halo.transform, value);
+        MaterialTools.SetTransparency(HaloCenter.transform, value);
+    }
     public static implicit operator Vector3(Tile v)
     {
         throw new NotImplementedException();
