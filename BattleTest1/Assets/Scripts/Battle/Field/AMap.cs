@@ -18,6 +18,10 @@ public class AMap : MonoBehaviour
 
     void Start()
     {
+        unitContainer = Instantiate(Resources.Load<GameObject>("Prefabs/BattleScene/UnitsContainer"));
+        unitContainer.name = "UnitContainer";
+        unitContainer.transform.SetParent(transform.parent, false);
+        unitBench = unitContainer.transform.GetChild(0).gameObject;
         unitList = new GameObject[9];
         tiles = new GameObject[9, 10];
         for (int y = 0; y < transform.childCount / 9; y++) // 타일 배열 담기
@@ -89,6 +93,7 @@ public class AMap : MonoBehaviour
                     {
                         unitList[i] = itemObject;
                         itemObject.transform.position = tiles[i, 0].transform.position + new Vector3(0f, 1f, 0f);
+                        itemObject.transform.parent = unitBench.transform;
                         break;
                     }
                 }
