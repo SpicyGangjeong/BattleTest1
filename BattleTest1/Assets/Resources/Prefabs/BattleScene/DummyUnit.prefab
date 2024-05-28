@@ -1593,6 +1593,7 @@ GameObject:
   - component: {fileID: 6609428856781693463}
   - component: {fileID: 6609428856781693462}
   - component: {fileID: 6609428856781693460}
+  - component: {fileID: -1472577725449185337}
   - component: {fileID: 6609428856781693461}
   m_Layer: 0
   m_Name: DummyUnit
@@ -1656,7 +1657,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 6609428856781693459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6687536d20c644ca0638504b516b40, type: 3}
+  m_Script: {fileID: 11500000, guid: 47890493cb3786743803a468facce111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  draggable: 0
+  isOnBattle: 0
+  currentTile: {fileID: 0}
+  targetTile: {fileID: 0}
+  target: {fileID: 0}
+  startObject: {fileID: 0}
+  destObject: {fileID: 0}
+--- !u!114 &-1472577725449185337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6609428856781693459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae557b56da270041a607669ec8ca180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6609428856781693461
@@ -1668,10 +1688,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6609428856781693459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f74e466ee8512448b97f9e9bc2bfe45, type: 3}
+  m_Script: {fileID: 11500000, guid: a453d1952487aa946b9993cfb71e377f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonData: {fileID: 4900000, guid: 7f9b871b267926844b45ef1dc907875e, type: 3}
+  jsonData: {fileID: 0}
   unitStat:
     unitCode: 0
     unitType: 0
