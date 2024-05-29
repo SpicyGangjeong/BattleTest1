@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UnitController : MonoBehaviour
 {
@@ -84,29 +85,28 @@ public class UnitController : MonoBehaviour
         // end
         if (Input.GetMouseButtonDown(0))
         {
-            int value = Convert.ToInt32(statManager.unitStat.rarity) * (int)Math.Pow(3.0f, Convert.ToInt32(statManager.unitStat.star));
-            SaleManager.AlterVisible();
-            SaleManager.AlterValue(value);
-
-            RaycastHit hit = RayCastingTool.CastRay();
+            RaycastHit hit = CastingTool.CastRay();
             if (hit.transform == transform)
             {
+                //TODO StatManager의 value를 쓰도록 바꿔야함
+                int value = statManager.getCost();
+                SaleManager.AlterVisible();
+                SaleManager.AlterValue(value);
+
                 draggable = true;
             }
         }
         if (draggable && Input.GetMouseButtonUp(0))
         {
-            SaleManager.AlterVisible();
-
-            RaycastHit[] hits = RayCastingTool.CastRayArray();
+            RaycastHit[] hits = CastingTool.CastRayArray();
             bool isMovingSuccessful = false;
             for (int i = 0; i < hits.Length; i++)
             {
                 RaycastHit hit = hits[i];
-
-                if (hit.collider.gameObject.name.Contains("Tile") && hit.collider.transform.GetComponent<TileController>().placable)
+                GameObject hitObject = hit.collider.gameObject;
+                if (hitObject.name.Contains("Tile") && hitObject.transform.GetComponent<TileController>().placable)
                 {
-                    TileController newTile = hit.collider.transform.GetComponent<TileController>();
+                    TileController newTile = hitObject.transform.GetComponent<TileController>();
                     draggable = false;
                     switch (newTile.tileContainer)
                     {
@@ -143,6 +143,16 @@ public class UnitController : MonoBehaviour
                     break;
                 }
             }
+            RaycastResult[] uiHits = CastingTool.CastUIRayArray();
+            for (int i = 0; i < uiHits.Length; i++)
+            {
+                if (uiHits[i].gameObject.name.Contains("SellPanel"))
+                {
+                    SaleManager.sellUnit(gameObject, statManager.getCost());
+                    //TODO Halo 설정해줘야함
+                }
+            }
+            SaleManager.AlterVisible();
             MovingFailure(isMovingSuccessful);
         }
         if (draggable && !isOnBattle) // TODO 전투중일 땐 중지해야 함.

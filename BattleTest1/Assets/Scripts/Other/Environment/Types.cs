@@ -76,11 +76,11 @@ public class Types
     }
     public enum UnitRarity
     {
-        Common = 1,
-        Uncommon = 2,
-        Rare = 3,
-        Epic = 4,
-        Legend = 5,
+        Common,
+        Uncommon,
+        Rare,
+        Epic,
+        Legend,
         Relic,
         Equipment,
         Consumable,

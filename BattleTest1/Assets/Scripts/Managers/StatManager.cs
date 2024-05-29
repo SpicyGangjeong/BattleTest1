@@ -7,21 +7,13 @@ public class StatManager : MonoBehaviour
 {
     public TextAsset jsonData;
     public Stat unitStat;
-    public void setStats(Types.UnitCode unitCode)
+    public void Start()
     {
-        string json = jsonData.text;
-        StatList sList = JsonUtility.FromJson<StatList>(json);
-
-        // 변환된 객체를 사용하여 작업 수행
-        foreach (Stat _stat in sList.statsList)
-        {
-            if (_stat.unitCode == (int)unitCode)
-            {
-                unitStat = _stat; 
-                break;
-
-            }
-        }
+        
+    }
+    public void setStats(Stat stat)
+    {
+        this.unitStat = stat;
     }
     public void starUp(int destStar)
     {
@@ -32,6 +24,32 @@ public class StatManager : MonoBehaviour
             unitStat.curHp = (int)Math.Round(unitStat.curHp * 1.8);
             unitStat.melee = (int)Math.Round(unitStat.melee * 1.5);
         }
+    }
+    public int getCost()
+    {
+        int cost = 0;
+        switch (unitStat.rarity)
+        {
+            case Types.UnitRarity.Common:
+                cost = 1 * (int)Math.Pow(3.0f, unitStat.star - 1);
+                break;
+            case Types.UnitRarity.Uncommon:
+                cost = 2 * (int)Math.Pow(3.0f, unitStat.star - 1);
+                break;
+            case Types.UnitRarity.Rare:
+                cost = 3 * (int)Math.Pow(3.0f, unitStat.star - 1);
+                break;
+            case Types.UnitRarity.Epic:
+                cost = 4 * (int)Math.Pow(3.0f, unitStat.star - 1);
+                break;
+            case Types.UnitRarity.Legend:
+                cost = 5 * (int)Math.Pow(3.0f, unitStat.star - 1);
+                break;
+            default:
+                cost = -1;
+                break;
+        }
+        return cost;
     }
     public void getDamaged()
     {

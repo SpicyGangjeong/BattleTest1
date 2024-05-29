@@ -8,7 +8,7 @@ public class ButtonListener : MonoBehaviour
     public GameObject MenuPanel;
     public void onMenuButtonClicked()
     {
-        MenuPanel.SetActive(!MenuPanel.activeSelf);
+        UITools.AlterVisible(MenuPanel);
     }
 
     public void onRerollButtonClicked()

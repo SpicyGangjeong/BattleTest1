@@ -13,6 +13,7 @@ public class ItemController : MonoBehaviour
     GameObject itemJob;
     GameObject itemName;
     public Item item;
+    Inventory inventory;
     [SerializeField]
     public GameObject aMap;
     void Start()
@@ -28,12 +29,8 @@ public class ItemController : MonoBehaviour
         // TODO itemFaction.transform.GetChild(0).GetComponent<Image>().sprite = (Sprite)Resources.Load("");
         // TODO itemJob.transform.GetChild(0).GetComponent<Image>().sprite = (Sprite)Resources.Load("");
         itemName.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Convert.ToString(item.getName());
+        inventory = Inventory.getInstance();
     }
-    void Update()
-    {
-        
-    }
-
     public void Purchase()
     {
         Boolean isPlacable = false;
@@ -45,8 +42,9 @@ public class ItemController : MonoBehaviour
                 break;
             }
         }
-        if (isPlacable)
+        if (isPlacable && item.getCost() < inventory.Gold)
         {
+            inventory.Gold -= item.getCost();
             int isSuccess = UnitBenchController.PlaceItem((UnitItem)item);
             if (itemListPanel.GetComponent<HorizontalLayoutGroup>().enabled)
                 itemListPanel.GetComponent<HorizontalLayoutGroup>().enabled = false;

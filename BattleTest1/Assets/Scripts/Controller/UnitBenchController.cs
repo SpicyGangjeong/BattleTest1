@@ -43,6 +43,8 @@ public class UnitBenchController : MonoBehaviour
             {
                 UnitItem unitItem = (UnitItem)item;
                 GameObject itemObject = Instantiate(unitItem.loadItem());
+                itemObject.GetComponent<UnitManager>().setInitialStatus(unitItem);
+                //TODO ADD Stat;
                 for (int index = 0; index < 9; index++)
                 {
                     if (unitList[index] is null)

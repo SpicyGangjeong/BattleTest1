@@ -2,7 +2,7 @@
 using UnityEngine;
 public class UnitItem : Item
 {
-    TextAsset jsonData = Resources.Load<TextAsset>("Scripts/unitStat");
+    TextAsset jsonData = Resources.Load<TextAsset>("Prefabs/BattleScene/unitStat");
     Stat unitStat;
     int cost;
     Types.UnitFaction faction;
@@ -76,7 +76,7 @@ public class UnitItem : Item
     }
     public Stat getStat()
     {
-        return null;
+        return unitStat;
     }
     public GameObject loadItem()
     {

@@ -7,11 +7,13 @@ public class SaleManager : MonoBehaviour
 {
     static GameObject thisObject;
     static TextMeshProUGUI goldTMP;
+    static Inventory inventory;
     void Start()
     {
+        inventory = Inventory.getInstance();
         thisObject = gameObject;
+        UITools.AlterVisible(gameObject);
         goldTMP = GetComponentsInChildren<TextMeshProUGUI>()[1];
-        AlterValue(39);
     }
     void Update()
     {
@@ -19,10 +21,15 @@ public class SaleManager : MonoBehaviour
     }
     public static void AlterVisible()
     {
-        thisObject.SetActive(!thisObject.activeSelf);
+        UITools.AlterVisible(thisObject);
     }
     public static void AlterValue(int value)
     {
-        goldTMP.text = value.ToString();
+        goldTMP.SetText(value.ToString());
+    }
+    public static void sellUnit(GameObject unitItem, int value)
+    {
+        inventory.Gold += value;
+        Destroy(unitItem);
     }
 }
