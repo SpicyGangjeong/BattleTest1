@@ -148,8 +148,18 @@ public class UnitController : MonoBehaviour
             {
                 if (uiHits[i].gameObject.name.Contains("SellPanel"))
                 {
+                    switch (currentTile.tileContainer)
+                    {
+                        case Types.TileContainer.UnitBench:
+                            UnitBenchController.PopUnit(gameObject, currentTile.tileIndex);
+                            break;
+                        case Types.TileContainer.UnitField:
+                            UnitFieldController.PopUnit(currentTile);
+                            break;
+                        default:
+                            break;
+                    }
                     SaleManager.sellUnit(gameObject, statManager.getCost());
-                    //TODO Halo 설정해줘야함
                 }
             }
             SaleManager.AlterVisible();
