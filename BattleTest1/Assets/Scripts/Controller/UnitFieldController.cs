@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class UnitFieldController : MonoBehaviour
 {
+    public static GameObject[] unitList;
     public static GameObject unitFieldController;
     void Start()
     {
@@ -12,7 +13,14 @@ public class UnitFieldController : MonoBehaviour
     }
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            for(int i = 0; i < transform.childCount; i++)
+            {
+                UnitController unitController = transform.GetChild(i).GetComponent<UnitController>();
+                unitController.isOnBattlePhase = !unitController.isOnBattlePhase;
+            }
+        }
     }
     public static void PlaceUnit(GameObject itemObject, TileController tileController)
     {
@@ -24,5 +32,14 @@ public class UnitFieldController : MonoBehaviour
     {
         tileController.placable = true;
         return;
+    }
+    public void UpdateUnitList()
+    {
+        unitList = null;
+        unitList = new GameObject[transform.childCount];
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            unitList[i] = transform.GetChild(i).gameObject;
+        }
     }
 }

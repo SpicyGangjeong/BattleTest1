@@ -113,6 +113,7 @@ public class Types
     {
         Block,
         Open,
+        Object,
     }
     public enum TileContainer
     {

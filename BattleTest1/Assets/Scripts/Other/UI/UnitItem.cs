@@ -8,25 +8,9 @@ public class UnitItem : Item
     Types.UnitFaction faction;
     Types.UnitJob job;
     Types.UnitCode unitCode;
-    public void setStats(int unitCode)
-    {
-        string json = jsonData.text;
-        StatList sList = JsonUtility.FromJson<StatList>(json);
-
-        // 변환된 객체를 사용하여 작업 수행
-        foreach (Stat _stat in sList.statsList)
-        {
-            if (_stat.unitCode == unitCode)
-            {
-                unitStat = _stat;
-                break;
-
-            }
-        }
-    }
     public UnitItem(int unitCode)
     {
-        setStats(unitCode);
+        unitStat = JsonHandler.getStat(jsonData, unitCode);
         switch (unitStat.rarity)
         {
             case Types.UnitRarity.Common:

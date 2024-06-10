@@ -28,45 +28,51 @@ public class PathFinding : MonoBehaviour
         ATile endTile = new ATile(ref tTile);
         bool pathSuccess = false;
         openList.Add(startTile);
-        if (sTile.tileState == Types.TileState.Open && tTile.tileState == Types.TileState.Open)
-        {
-            while (openList.Count > 0) // 찾을 방이 남아있다면 반복
-            {
-                ATile currentTile = openList[0];
-                // fCost = gCost + hCost
-                // gCost = 그 위치까지 가는 실제 비용
-                // hCost = 그 타일에서 도착지점까지의 거리
-                // 열린목록에 F cost가 가장 작은 노드를 찾는다. 만약에 F cost가 같다면 H cost가 작은 노드를 찾는다.
-                for (int i = 0; i < openList.Count; i++)
-                {
-                    if (currentTile.fCost > openList[i].fCost ||
-                        (currentTile.fCost == openList[i].fCost && currentTile.hCost > openList[i].hCost))
-                    {
-                        currentTile = openList[i];
-                    }
-                }
-                // 탐색된 현재 가장 비용이 적게드는 노드는 열린목록에서 제거하고 끝난목록에 추가한다.
-                openList.Remove(currentTile);
-                closedList.Add(currentTile);
-                // 탐색된 노드가 목표 노드라면 탐색 종료
-                if (currentTile.refTile == endTile.refTile)
-                {
-                    pathSuccess = true;
-                    endTile = currentTile;
-                    break;
-                }
-                openList.Sort((ATile a, ATile b) => a.fCost.CompareTo(b.fCost));
 
-                // 탐색된 노드가 목표 노드가 아니라면 계속탐색(이웃 노드)
-                foreach (ATile n in map.getNeighbours(currentTile))
+        while (openList.Count > 0) // 찾을 방이 남아있다면 반복
+        {
+            ATile currentTile = openList[0];
+            // fCost = gCost + hCost
+            // gCost = 그 위치까지 가는 실제 비용
+            // hCost = 그 타일에서 도착지점까지의 거리
+            // 열린목록에 F cost가 가장 작은 노드를 찾는다. 만약에 F cost가 같다면 H cost가 작은 노드를 찾는다.
+            for (int i = 0; i < openList.Count; i++)
+            {
+                if (currentTile.fCost > openList[i].fCost ||
+                    (currentTile.fCost == openList[i].fCost && currentTile.hCost > openList[i].hCost))
                 {
-                    // 탐색이 끝난목록에 있는 경우는 스킵
-                    if (closedList.Contains(n)) continue;
-                    n.gCost = currentTile.gCost + getDistanceCost(currentTile, n);
-                    n.hCost = getDistanceCost(n, endTile);
-                    n.fCost = n.hCost + n.gCost;
-                    n.parentTile = currentTile;
-                    openList.Add(n);
+                    currentTile = openList[i];
+                }
+            }
+            // 탐색된 현재 가장 비용이 적게드는 노드는 열린목록에서 제거하고 끝난목록에 추가한다.
+            openList.Remove(currentTile);
+            closedList.Add(currentTile);
+            // 탐색된 노드가 목표 노드라면 탐색 종료
+            if (currentTile.refTile == endTile.refTile)
+            {
+                pathSuccess = true;
+                endTile = currentTile;
+                break;
+            }
+            // 탐색된 노드가 목표 노드가 아니라면 계속탐색(이웃 노드)
+            foreach (ATile neighbour in map.getNeighbours(currentTile))
+            {
+                // 탐색이 끝난목록에 있는 경우는 스킵
+                if (closedList.Contains(neighbour))
+                    continue;
+
+                float newMovementCostToNeighbour = currentTile.gCost + getDistanceCost(currentTile, neighbour);
+                if (newMovementCostToNeighbour < neighbour.gCost || !openList.Contains(neighbour))
+                {
+                    neighbour.gCost = newMovementCostToNeighbour;
+                    neighbour.hCost = getDistanceCost(neighbour, endTile);
+                    neighbour.fCost = neighbour.gCost + neighbour.hCost;
+                    neighbour.parentTile = currentTile;
+
+                    if (!openList.Contains(neighbour))
+                    {
+                        openList.Add(neighbour);
+                    }
                 }
             }
         }
@@ -86,7 +92,7 @@ public class PathFinding : MonoBehaviour
     {
         List<TileController> path = new List<TileController>();
         ATile currentTile = endTile;
-
+        currentTile = currentTile.parentTile;
         while (currentTile.refTile != startTile.refTile)
         {
             path.Add(currentTile.refTile);

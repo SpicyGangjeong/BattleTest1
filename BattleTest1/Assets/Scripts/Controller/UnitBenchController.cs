@@ -6,7 +6,6 @@ public class UnitBenchController : MonoBehaviour
 {
     public static GameObject unitBench;
     public static GameObject[] unitList;
-    // Start is called before the first frame update
     void Start()
     {
         unitBench = this.gameObject;
@@ -20,8 +19,6 @@ public class UnitBenchController : MonoBehaviour
             tileController.tileIndex = i;
         }
     }
-
-    // Update is called once per frame
     void Update()
     {
 

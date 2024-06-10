@@ -52,14 +52,14 @@ public class AMapController : MonoBehaviour
     public List<ATile> getNeighbours(ATile tile)
     {
         List<ATile> neighbours = new List<ATile>();
-        for (int x = -1; x <= 1; x++) // 주변타일 탐색
+        for (int x = -1; x <= 1; x++)
         {
             for (int y = -1; y <= 1; y++)
             {
-                if (x == 0 && y == 0) continue; // 자기 위치 제외
+                if (x == 0 && y == 0) continue;
 
                 tile.refTile.getCoordinate(out int checkX, out int checkY);
-                if (checkY % 2 == 0 && (x == -1 && (y == -1 || y == 1))) // 육각타일은 건너갈 수 없는 위치 제외
+                if (checkY % 2 == 0 && (x == -1 && (y == -1 || y == 1)))
                 {
                     continue;
                 }
@@ -70,14 +70,18 @@ public class AMapController : MonoBehaviour
                 checkX += x;
                 checkY += y;
 
-                if (tiles[checkX, checkY].GetComponent<TileController>().tileState == Types.TileState.Open) // 탐색한 타일이 열려있으면 
+                if (checkX >= 0 && checkX < tiles.GetLength(0) && checkY >= 0 && checkY < tiles.GetLength(1))
                 {
                     TileController objTile = tiles[checkX, checkY].GetComponent<TileController>();
-                    neighbours.Add(new ATile(ref objTile)); // 추가
+                    if (objTile.tileState == Types.TileState.Open || objTile.tileState == Types.TileState.Object)
+                    {
+                        neighbours.Add(new ATile(ref objTile));
+                    }
                 }
             }
         }
         return neighbours;
     }
+
 
 }
