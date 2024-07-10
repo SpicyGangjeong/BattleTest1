@@ -23,11 +23,14 @@ public class PathFinding : MonoBehaviour
     {
         TileController[] waypoints = new TileController[0];
         List<ATile> openList = new List<ATile>();
+        HashSet<TileController> openRefTileSet = new HashSet<TileController>();
         HashSet<ATile> closedList = new HashSet<ATile>();
+        HashSet<TileController> closedRefTileSet = new HashSet<TileController>();
         ATile startTile = new ATile(ref sTile);
         ATile endTile = new ATile(ref tTile);
         bool pathSuccess = false;
         openList.Add(startTile);
+        openRefTileSet.Add(startTile.refTile);
 
         while (openList.Count > 0) // 찾을 방이 남아있다면 반복
         {
@@ -46,7 +49,9 @@ public class PathFinding : MonoBehaviour
             }
             // 탐색된 현재 가장 비용이 적게드는 노드는 열린목록에서 제거하고 끝난목록에 추가한다.
             openList.Remove(currentTile);
+            openRefTileSet.Remove(currentTile.refTile);
             closedList.Add(currentTile);
+            closedRefTileSet.Add(currentTile.refTile);
             // 탐색된 노드가 목표 노드라면 탐색 종료
             if (currentTile.refTile == endTile.refTile)
             {
@@ -62,16 +67,17 @@ public class PathFinding : MonoBehaviour
                     continue;
 
                 float newMovementCostToNeighbour = currentTile.gCost + getDistanceCost(currentTile, neighbour);
-                if (newMovementCostToNeighbour < neighbour.gCost || !openList.Contains(neighbour))
+                if (newMovementCostToNeighbour < neighbour.gCost || !closedRefTileSet.Contains(neighbour.refTile))
                 {
                     neighbour.gCost = newMovementCostToNeighbour;
                     neighbour.hCost = getDistanceCost(neighbour, endTile);
                     neighbour.fCost = neighbour.gCost + neighbour.hCost;
                     neighbour.parentTile = currentTile;
 
-                    if (!openList.Contains(neighbour))
+                    if (!closedRefTileSet.Contains(neighbour.refTile))
                     {
                         openList.Add(neighbour);
+                        openRefTileSet.Add(neighbour.refTile);
                     }
                 }
             }

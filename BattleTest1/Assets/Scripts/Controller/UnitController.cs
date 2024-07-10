@@ -7,11 +7,10 @@ using UnityEngine.EventSystems;
 
 public class UnitController : MonoBehaviour
 {
+    GameManager gameManager = GameManager.getInstance();
     public bool draggable;
-    public bool isOnBattlePhase = false;
-    public bool isMoving = false;
     public bool enemyFound = false;
-    public bool isOnBattle = false;
+    public bool isOnRange = false;
     public TileController currentTile;
     public TileController targetTile;
     GameObject enemy;
@@ -37,6 +36,10 @@ public class UnitController : MonoBehaviour
             path = newPath;
             StopAllCoroutines();
             StartCoroutine(FollowPath());
+        } else if (!pathSuccessful)
+        {
+            Debug.Log("PathNotFound");
+            //TODO 다시 적 찾도록 유도해야함
         }
     }
     IEnumerator FollowPath()
@@ -47,18 +50,19 @@ public class UnitController : MonoBehaviour
         {
             if (transform.position == currentWaypoint.getLocation())
             {
+                yield return new WaitForSeconds(0.2f);
                 targetIndex++;
                 if(targetIndex >= path.Length)
                 {
-                    isOnBattle = true; // TODO 근접하면 싸우는중인거 손봐야함
+                    isOnRange = true; // TODO 근접하면 싸우는중인거 손봐야함
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
                 if (currentWaypoint.tileState == Types.TileState.Block || currentWaypoint.tileState == Types.TileState.Object)
                 {
                     path = null;
-                    yield return new WaitForSeconds(1f); // 1초 동안 대기
-                    isMoving = false;
+                    enemyFound = false;
+                    yield return new WaitForSeconds(0.2f);
                     yield break;
                 }
             }
@@ -67,7 +71,7 @@ public class UnitController : MonoBehaviour
             currentTile = currentWaypoint;
 
             transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.getLocation(), speed * Time.deltaTime);
-
+            // TODO 다음 이동 때 이동 가능 한 타일인지 확인하고 움직여야 함.
             yield return null;
         }
     }
@@ -76,24 +80,30 @@ public class UnitController : MonoBehaviour
         // Moving Inputs
         if (isAlly)
         {
-            if (Input.GetKeyDown(KeyCode.C)) // TODO
+            if (gameManager.isOnBattle) // TODO
             {
-                if (!enemyFound)
+                if (Input.GetMouseButton(0))
                 {
-                    enemy = null;
-                    targetTile = null;
-                    enemy = FindNearestEnemy();
-                    if (enemy != null)
+                    if (!enemyFound)
                     {
-                        enemyFound = true;
-                        targetTile = enemy.GetComponent<UnitController>().currentTile;
+                        enemy = null;
+                        targetTile = null;
+                        enemy = FindNearestEnemy();
+                        if (enemy != null)
+                        {
+                            enemyFound = true;
+                            targetTile = enemy.GetComponent<UnitController>().currentTile;
+                        }
                     }
-                }
-                if (enemyFound && !isOnBattle && !isMoving)
-                {
-                    isMoving = true;
-                    path = null;
-                    PathRequestManager.RequestPath(currentTile, targetTile, OnPathFound);
+                    if (enemyFound && !isOnRange)
+                    {
+                        path = null;
+                        PathRequestManager.RequestPath(currentTile, targetTile, OnPathFound);
+                    }
+                    else if (enemyFound && isOnRange)
+                    {
+                        Debug.Log("OnBattle");
+                    }
                 }
             }
             else
@@ -210,7 +220,7 @@ public class UnitController : MonoBehaviour
         } 
         else
         {
-            if (isOnBattlePhase) // TODO
+            if (gameManager.isOnBattle) // TODO
             {
                 if (!enemyFound)
                 {
@@ -223,9 +233,8 @@ public class UnitController : MonoBehaviour
                         targetTile = enemy.GetComponent<UnitController>().currentTile;
                     }
                 }
-                if (enemyFound && !isOnBattle && !isMoving)
+                if (enemyFound && !isOnRange)
                 {
-                    isMoving = true;
                     path = null;
                     PathRequestManager.RequestPath(currentTile, targetTile, OnPathFound);
                 }
@@ -241,7 +250,7 @@ public class UnitController : MonoBehaviour
             transform.position = currentTile.getLocation();
         }
     }
-    public GameObject FindNearestEnemy()
+    public GameObject FindNearestEnemy() // 적이 아군 찾는것도 해야함
     {
         float distance = float.MaxValue;
         GameObject nearistEnemy = null;
@@ -258,7 +267,7 @@ public class UnitController : MonoBehaviour
             }
         } else
         {
-            foreach (GameObject unit in EnemyFieldController.enemyList)
+            foreach (GameObject unit in UnitFieldController.unitList)
             {
                 float dummyDistance = (transform.position - unit.transform.position).magnitude;
                 if (dummyDistance < distance)

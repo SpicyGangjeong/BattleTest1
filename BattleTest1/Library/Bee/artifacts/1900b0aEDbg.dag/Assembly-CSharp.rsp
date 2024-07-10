@@ -375,6 +375,7 @@
 "Assets/Scripts/Controller/UnitFieldController.cs"
 "Assets/Scripts/Listener/ButtonListener.cs"
 "Assets/Scripts/Managers/DeckManager.cs"
+"Assets/Scripts/Managers/GameManager.cs"
 "Assets/Scripts/Managers/ItemListManager.cs"
 "Assets/Scripts/Managers/PathRequestManager.cs"
 "Assets/Scripts/Managers/SaleManager.cs"
