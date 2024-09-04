@@ -1,0 +1,4 @@
+repository "BattleTest1@Cforme@cloud"
+  path "/"
+    br "/main"
+    co "/main"

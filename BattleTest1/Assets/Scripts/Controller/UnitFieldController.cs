@@ -19,8 +19,9 @@ public class UnitFieldController : MonoBehaviour
             for(int i = 0; i < transform.childCount; i++)
             {
                 UnitController unitController = transform.GetChild(i).GetComponent<UnitController>();
-                gameManager.isOnBattle = !gameManager.isOnBattle;
             }
+            gameManager.isOnBattle = !gameManager.isOnBattle;
+            Debug.Log("CurrentBattleState: " + gameManager.isOnBattle);
         }
     }
     public static void PlaceUnit(GameObject itemObject, TileController tileController)

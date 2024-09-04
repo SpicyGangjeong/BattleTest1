@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638479010105797600
-    m_Hash: 921881460
+      ticks: 638610789602467373
+    m_Hash: 3329621021
   m_LockFileStatus:
     m_FilePath: C:/Users/kimnuri/Documents/GitHub/BattleTest1/BattleTest1/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638479010105807566
-    m_Hash: 2248282942
+      ticks: 638610789717202684
+    m_Hash: 1596001044
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,12 +22,12 @@ m_LocalPackages:
 m_ProjectPath: C:/Users/kimnuri/Documents/GitHub/BattleTest1/BattleTest1/Packages
 m_EditorVersion: 2021.3.26f1 (a16dc32e0ff2)
 m_ResolvedPackages:
-- packageId: com.unity.collab-proxy@2.0.4
+- packageId: com.unity.collab-proxy@2.1.0
   testable: 0
   isDirectDependency: 1
-  version: 2.0.4
+  version: 2.1.0
   source: 1
-  resolvedPath: C:\Users\kimnuri\Documents\GitHub\BattleTest1\BattleTest1\Library\PackageCache\com.unity.collab-proxy@2.0.4
+  resolvedPath: C:\Users\kimnuri\Documents\GitHub\BattleTest1\BattleTest1\Library\PackageCache\com.unity.collab-proxy@2.1.0
   assetPath: Packages/com.unity.collab-proxy
   name: com.unity.collab-proxy
   displayName: Version Control
@@ -36,7 +36,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: Editor
-  type: asset
+  type: assets
   description: The package gives you the ability to use Unity Version Control in
     the Unity editor. To use Unity Version Control, a subscription is required. Learn
     more about how you can get started for free by visiting plasticscm.com.
@@ -116,6 +116,7 @@ m_ResolvedPackages:
     - 2.2.0
     - 2.3.1
     - 2.4.3
+    - 2.4.4
     compatible:
     - 2.0.4
     - 2.0.5
@@ -127,6 +128,7 @@ m_ResolvedPackages:
     - 2.2.0
     - 2.3.1
     - 2.4.3
+    - 2.4.4
     verified: 2.0.7
   dependencies: []
   resolvedDependencies: []
@@ -155,13 +157,13 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 0
   isAssetStorePackage: 0
-  datePublishedTicks: 638176024310000000
-  documentationUrl: https://docs.unity3d.com/Packages/com.unity.collab-proxy@2.0/manual/index.html
+  datePublishedTicks: 638301329890000000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.collab-proxy@2.1/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-    revision: dc15ef2ed609e8c19d0525a46c5bf7dd78df8432
+    revision: 179e96acc2f95fcb9dcc91b5fb2ee5f3e85d48aa
     path: 
   unityLifecycle:
     version: 2.0.4
@@ -652,30 +654,34 @@ m_ResolvedPackages:
     - 5.1.1
     - 5.2.0
     - 5.2.2
+    - 5.2.3
     - 6.0.1-pre.1
     - 6.0.1-pre.2
     - 6.0.1
+    - 6.0.2
+    - 6.0.3
     compatible:
     - 5.0.7
     - 5.1.0
     - 5.1.1
     - 5.2.0
     - 5.2.2
+    - 5.2.3
     verified: 5.0.7
   dependencies:
-  - name: com.unity.settings-manager
-    version: 1.0.3
-  - name: com.unity.modules.physics
-    version: 1.0.0
   - name: com.unity.modules.imgui
     version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.settings-manager
+    version: 1.0.3
   resolvedDependencies:
-  - name: com.unity.settings-manager
-    version: 1.0.3
-  - name: com.unity.modules.physics
-    version: 1.0.0
   - name: com.unity.modules.imgui
     version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.settings-manager
+    version: 1.0.3
   keywords:
   - 3d
   - model
@@ -997,6 +1003,7 @@ m_ResolvedPackages:
     - 1.4.2
     - 1.4.3
     - 1.4.4
+    - 1.4.5
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -1017,6 +1024,7 @@ m_ResolvedPackages:
     - 1.4.2
     - 1.4.3
     - 1.4.4
+    - 1.4.5
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -1375,18 +1383,18 @@ m_ResolvedPackages:
     - 1.8.7
     verified: 1.6.5
   dependencies:
+  - name: com.unity.modules.audio
+    version: 1.0.0
   - name: com.unity.modules.director
     version: 1.0.0
   - name: com.unity.modules.animation
     version: 1.0.0
-  - name: com.unity.modules.audio
-    version: 1.0.0
   - name: com.unity.modules.particlesystem
     version: 1.0.0
   resolvedDependencies:
-  - name: com.unity.modules.director
-    version: 1.0.0
   - name: com.unity.modules.audio
+    version: 1.0.0
+  - name: com.unity.modules.director
     version: 1.0.0
   - name: com.unity.modules.animation
     version: 1.0.0
@@ -3640,6 +3648,7 @@ m_ResolvedPackages:
     - 1.8.14
     - 1.8.15
     - 1.8.16
+    - 1.8.17
     compatible:
     - 1.6.6
     - 1.7.0-pre.1
@@ -3665,6 +3674,7 @@ m_ResolvedPackages:
     - 1.8.14
     - 1.8.15
     - 1.8.16
+    - 1.8.17
     verified: 1.6.6
   dependencies:
   - name: com.unity.mathematics
@@ -4515,11 +4525,13 @@ m_ResolvedPackages:
     - 1.2.3
     - 1.2.4
     - 1.2.5
+    - 1.2.6
     compatible:
     - 1.2.3
     - 1.2.4
     - 1.2.5
-    verified: 1.2.5
+    - 1.2.6
+    verified: 1.2.6
   dependencies:
   - name: com.unity.test-framework
     version: 1.0.16
