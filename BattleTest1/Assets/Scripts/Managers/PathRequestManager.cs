@@ -21,7 +21,7 @@ public class PathRequestManager : MonoBehaviour
     }
 
     // 길찾기 요청
-    public static void RequestPath(TileController pathStart, TileController pathEnd, UnityAction<TileController[], bool> callback)
+    public static void RequestPath(TileController pathStart, TileController pathEnd, UnityAction<TileController, bool> callback)
     {
         PathRequest newRequest = new PathRequest(pathStart, pathEnd, callback); // 새로운 요청을 만듦
         instance.pathRequestQueue.Enqueue(newRequest); // 큐에 넣음
@@ -38,7 +38,7 @@ public class PathRequestManager : MonoBehaviour
         }
     }
    
-    public void FinishedProcessingPath(TileController[] path, bool success)
+    public void FinishedProcessingPath(TileController path, bool success)
     {
         currentPathRequest.callback(path, success); // 콜백에 담고
         isProcessingPath = false; // 플래그 고치고
@@ -50,9 +50,9 @@ struct PathRequest
 {
     public TileController pathStart;
     public TileController pathEnd;
-    public UnityAction<TileController[], bool> callback;
+    public UnityAction<TileController, bool> callback;
 
-    public PathRequest(TileController nStart, TileController nEnd, UnityAction<TileController[], bool> nCallback)
+    public PathRequest(TileController nStart, TileController nEnd, UnityAction<TileController, bool> nCallback)
     {
         pathStart = nStart;
         pathEnd = nEnd;

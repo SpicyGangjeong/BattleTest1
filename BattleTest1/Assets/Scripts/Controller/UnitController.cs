@@ -13,14 +13,14 @@ public class UnitController : MonoBehaviour
     public bool isOnRange = false;
     public TileController currentTile;
     public TileController targetTile;
-    GameObject enemy;
+    public GameObject enemy;
     float lineSize = 30.0f;
-    float speed = 20;
+    float speed = 1;
     int targetIndex;
     public StatManager statManager;
     [SerializeField]
     public bool isAlly = true;
-    public TileController[] path;
+    public TileController nextTile;
 
     void Start()
     {
@@ -28,11 +28,11 @@ public class UnitController : MonoBehaviour
         setCurrentTile();
     }
 
-    private void OnPathFound(TileController[] newPath, bool pathSuccessful)
+    private void OnPathFound(TileController nextPath, bool pathSuccessful)
     {
         if (pathSuccessful)
         {
-            path = newPath;
+            nextTile = nextPath;
             StopAllCoroutines();
             StartCoroutine(FollowPath()); 
         }
@@ -46,37 +46,15 @@ public class UnitController : MonoBehaviour
 
     IEnumerator FollowPath()
     {
-        TileController currentWaypoint = path[0];
-        targetIndex = 0;
+        TileController currentWaypoint = nextTile;
         followingPath = true;
-        bool isInterupted = false;
 
-        while (true) // TODO: 현재 Path를 전부 따라가도록 설계되었기에 적과 아군 동시에 FollolwPath하게 되면 제대로 이동하지 않는 문제,
-                     // HOW: -> Path를 전부 따라가면 안됨, 한칸 이동하고 Path를 다시 갱신하도록 코드를 바꿔야함
-                     // BUT: -> 과연 이러한 방식이 효율적이고 과부하를 발생하지 않는가?
+        while (true)
         {
             if (transform.position == currentWaypoint.getLocation())
             {
                 yield return new WaitForSeconds(0.2f);
-                targetIndex++;
-                if (enemy == null || enemy.GetComponent<UnitController>().currentTile != targetTile)
-                {
-                    isInterupted = true;
-                    break;
-                }
-                if (targetIndex >= path.Length) // TODO: 스킬 혹은 공격 사거리에 들어왔는지 확인하는 과정 필요
-                {
-                    isOnRange = true; // TODO: 조건 만족하면 싸우는 중인 거 구현해야함
-                    yield break;
-                }
-                currentWaypoint = path[targetIndex];
-                if (currentWaypoint.tileState == Types.TileState.Block || currentWaypoint.tileState == Types.TileState.Object)
-                {
-                    path = null;
-                    enemyFound = false;
-                    yield return new WaitForSeconds(0.2f);
-                    yield break;
-                }
+                break;
             }
 
             currentTile.tileState = Types.TileState.Open;
@@ -86,16 +64,9 @@ public class UnitController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.getLocation(), speed * Time.deltaTime);
             yield return null;
         }
-
-        if (isInterupted)
-        {
-            enemyFound = false;
-            followingPath = false;
-            findEnemyAndTrace();
-            yield return null;
-        }
-
+        enemyFound = false;
         followingPath = false;
+        targetTile = null;
     }
 
     private void Update()
@@ -116,7 +87,7 @@ public class UnitController : MonoBehaviour
         {
             if (gameManager.isOnBattle) // TODO
             {
-                findEnemyAndTrace();
+                //findEnemyAndTrace(); // 활성화 시키면 PathFinding에서 DEADLOCK 걸림 ==> static으로 접근하지 말고 객체마다 PathFinding 객체를 만들어야하나/**/
             }
         }
     }
@@ -239,7 +210,7 @@ public class UnitController : MonoBehaviour
 
         if (!followingPath && enemyFound && !isOnRange)
         {
-            path = null;
+            nextTile = null;
             PathRequestManager.RequestPath(currentTile, targetTile, OnPathFound);
         }
     }
