@@ -396,6 +396,7 @@
 "Assets/Scripts/Other/Tools/JsonHanlder.cs"
 "Assets/Scripts/Other/Tools/MaterialTools.cs"
 "Assets/Scripts/Other/Tools/MiniJSON.cs"
+"Assets/Scripts/Other/Tools/PriorityQueue.cs"
 "Assets/Scripts/Other/Tools/UITools.cs"
 "Assets/Scripts/Other/UI/ConsumableItem.cs"
 "Assets/Scripts/Other/UI/Deck.cs"

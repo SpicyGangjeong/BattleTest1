@@ -21,159 +21,90 @@ public class PathFinding : MonoBehaviour
 
     IEnumerator FindPath(TileController sTile, TileController tTile)
     {
-        TileController nextPath = new TileController();
+        TileController objectiveTile = null;
 
-        List<ATile> openList = new List<ATile>();
-        HashSet<TileController> openRefTileSet = new HashSet<TileController>();
+        PriorityQueue<ATile, ATile> pq = new PriorityQueue<ATile, ATile> ();
         HashSet<ATile> closedList = new HashSet<ATile>();
-        HashSet<TileController> closedRefTileSet = new HashSet<TileController>();
 
-        ATile startTile = new ATile(ref sTile);
+        ATile startTile = new ATile(ref sTile, 0, 0);
         ATile endTile = new ATile(ref tTile);
+        float smallest_fCost = float.MaxValue;
         bool pathSuccess = false;
 
-        openList.Add(startTile);
-        openRefTileSet.Add(startTile.refTile);
+        pq.Enqueue(startTile, startTile);
+        closedList.Add(startTile);
 
-        while (openList.Count > 0) // 찾을 방이 남아있다면 반복
+        if (!startTile.Equals(endTile))
         {
-            ATile currentTile = openList[0];
-            // fCost = gCost + hCost
-            // gCost = 그 위치까지 가는 실제 비용
-            // hCost = 그 타일에서 도착지점까지의 거리
-            // 열린목록에 F cost가 가장 작은 노드를 찾는다. 만약에 F cost가 같다면 H cost가 작은 노드를 찾는다.
-            for (int i = 0; i < openList.Count; i++)
+            int LoopCount = 0;
+            while (pq.Count > 0) // 찾을 방이 남아있다면 반복
             {
-                if (currentTile.fCost > openList[i].fCost ||
-                    (currentTile.fCost == openList[i].fCost && currentTile.hCost > openList[i].hCost))
+                ATile currentTile = pq.Dequeue();
+                if (LoopCount > 100000)
                 {
-                    currentTile = openList[i];
+                    Debug.Log("Loop was broken by [Too Much Loop] in PathFinding");
+                    break;
                 }
-            }
-            // 탐색된 현재 가장 비용이 적게드는 노드는 열린목록에서 제거하고 끝난목록에 추가한다.
-            openList.Remove(currentTile);
-            openRefTileSet.Remove(currentTile.refTile);
-            closedList.Add(currentTile);
-            closedRefTileSet.Add(currentTile.refTile);
-            // 탐색된 노드가 목표 노드라면 탐색 종료
-            if (currentTile.refTile == endTile.refTile)
-            {
-                pathSuccess = true;
-                endTile = currentTile;
-                break;
-            }
-            // 탐색된 노드가 목표 노드가 아니라면 계속탐색(이웃 노드)
-            foreach (ATile neighbour in map.getNeighbours(currentTile))
-            {
-                // 탐색이 끝난목록에 있는 경우는 스킵
-                if (closedList.Contains(neighbour))
-                    continue;
 
-                float newMovementCostToNeighbour = currentTile.gCost + getDistanceCost(currentTile, neighbour);
-                if (newMovementCostToNeighbour < neighbour.gCost || !closedRefTileSet.Contains(neighbour.refTile))
+                // 탐색된 노드가 목표 노드라면 탐색 종료
+                if (currentTile.Equals(endTile))
                 {
-                    neighbour.gCost = newMovementCostToNeighbour;
-                    neighbour.hCost = getDistanceCost(neighbour, endTile);
-                    neighbour.fCost = neighbour.gCost + neighbour.hCost;
-                    neighbour.parentTile = currentTile;
 
-                    if (!closedRefTileSet.Contains(neighbour.refTile))
+                    if (smallest_fCost > currentTile.fCost)
                     {
-                        openList.Add(neighbour);
-                        openRefTileSet.Add(neighbour.refTile);
+                        smallest_fCost = currentTile.fCost;
+                        endTile = currentTile;
+                    }
+                    pathSuccess = true;
+                }
+                closedList.Add(currentTile);
+                // 탐색된 노드가 목표 노드가 아니라면 계속탐색(이웃 노드)
+                foreach (ATile neighbour in map.getNeighbours(currentTile))
+                {
+                    // 탐색이 끝난목록에 있는 경우는 스킵
+                    if (closedList.Contains(neighbour))
+                        continue;
+
+                    float newMovementCost_ToNeighbour = currentTile.gCost + getDistanceCost(currentTile, neighbour);
+                    if (newMovementCost_ToNeighbour < neighbour.gCost) // 새로운 코스트가 기존 코스트보다 낮으면? 넣고 아니면 스킵
+                    {
+                        neighbour.gCost = newMovementCost_ToNeighbour;
+                        if (neighbour.hCost == 0)
+                        {
+                            neighbour.hCost = getDistanceCost(neighbour, endTile);
+                        }
+                        neighbour.fCost = neighbour.gCost + neighbour.hCost;
+                        neighbour.parentTile = currentTile;
+
+                        pq.Enqueue(neighbour, neighbour);
                     }
                 }
             }
         }
-        yield return null;
         // 길찾기 종료
         if (pathSuccess) // 길 찾았으면
         {
-            nextPath = startTile. // 경로를 추적
+            objectiveTile = RetracePath(startTile, endTile); // 경로를 추적
         }
         //노드들의 좌표를 담은 waypoints와 성공여부를 매니저함수에게 알려준다
-        requestManager.FinishedProcessingPath(nextPath, pathSuccess);
+        requestManager.FinishedProcessingPath(objectiveTile, pathSuccess);
+        yield return null;
     }
 
 
-    IEnumerator qFindPath(TileController sTile, TileController tTile)
+    // 탐색종료 후 최종 노드의 ParentTile를 추적하며 리스트에 담는다.
+    // 최종 경로에 있는 노드들의 좌표를 순차적으로 담아 리턴
+    TileController RetracePath(ATile startTile, ATile endTile)
     {
-        TileController nextPath = new TileController();
-
-        List<ATile> openList = new List<ATile>();
-        HashSet<TileController> openRefTileSet = new HashSet<TileController>();
-        HashSet<ATile> closedList = new HashSet<ATile>();
-        HashSet<TileController> closedRefTileSet = new HashSet<TileController>();
-
-        ATile startTile = new ATile(ref sTile);
-        ATile endTile = new ATile(ref tTile);
-        bool pathSuccess = false;
-
-        openList.Add(startTile);
-        openRefTileSet.Add(startTile.refTile);
-
-        while (openList.Count > 0) // 찾을 방이 남아있다면 반복
+        ATile currentTile = endTile.parentTile;
+        ATile beforeTile = endTile;
+        while (!currentTile.Equals(startTile))
         {
-            ATile currentTile = openList[0];
-            // fCost = gCost + hCost
-            // gCost = 그 위치까지 가는 실제 비용
-            // hCost = 그 타일에서 도착지점까지의 거리
-            // 열린목록에 F cost가 가장 작은 노드를 찾는다. 만약에 F cost가 같다면 H cost가 작은 노드를 찾는다.
-            for (int i = 0; i < openList.Count; i++)
-            {
-                if (currentTile.fCost > openList[i].fCost ||
-                    (currentTile.fCost == openList[i].fCost && currentTile.hCost > openList[i].hCost))
-                {
-                    currentTile = openList[i];
-                }
-            }
-            // 탐색된 현재 가장 비용이 적게드는 노드는 열린목록에서 제거하고 끝난목록에 추가한다.
-            openList.Remove(currentTile);
-            openRefTileSet.Remove(currentTile.refTile);
-            closedList.Add(currentTile);
-            closedRefTileSet.Add(currentTile.refTile);
-            // 탐색된 노드가 목표 노드라면 탐색 종료
-            if (currentTile.refTile == endTile.refTile)
-            {
-                pathSuccess = true;
-                endTile = currentTile;
-                break;
-            }
-            // 탐색된 노드가 목표 노드가 아니라면 계속탐색(이웃 노드)
-            foreach (ATile neighbour in map.getNeighbours(currentTile))
-            {
-                // 탐색이 끝난목록에 있는 경우는 스킵
-                if (closedList.Contains(neighbour))
-                    continue;
-
-                float newMovementCostToNeighbour = currentTile.gCost + getDistanceCost(currentTile, neighbour);
-                if (newMovementCostToNeighbour < neighbour.gCost || !closedRefTileSet.Contains(neighbour.refTile))
-                {
-                    neighbour.gCost = newMovementCostToNeighbour;
-                    neighbour.hCost = getDistanceCost(neighbour, endTile);
-                    neighbour.fCost = neighbour.gCost + neighbour.hCost;
-                    neighbour.parentTile = currentTile;
-
-                    if (!closedRefTileSet.Contains(neighbour.refTile))
-                    {
-                        openList.Add(neighbour);
-                        openRefTileSet.Add(neighbour.refTile);
-                    }
-                }
-            }
+            beforeTile = currentTile;
+            currentTile = currentTile.parentTile;
         }
-        yield return null;
-        // 길찾기 종료
-        if (pathSuccess) // 길 찾았으면
-        {
-            nextPath = startTile. // 경로를 추적
-        }
-        //노드들의 좌표를 담은 waypoints와 성공여부를 매니저함수에게 알려준다
-        requestManager.FinishedProcessingPath(nextPath, pathSuccess);
+        return beforeTile.refTile;
     }
-
-
-
 
     // 두 노드간의 거리로 Cost를 계산하지만 대각선이동과 직선이동의 길이가 서로 같기 때문에 노드거리 고려 x
     // 오직 목표지점과의 거리를 중심으로 봄

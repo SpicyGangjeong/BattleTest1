@@ -30,17 +30,23 @@ public class UnitController : MonoBehaviour
 
     private void OnPathFound(TileController nextPath, bool pathSuccessful)
     {
-        if (pathSuccessful)
+        if (nextPath == targetTile)
+        {
+            Debug.Log("isOnRange!!");
+            isOnRange = true;
+            followingPath = false;
+        } 
+        else if (pathSuccessful)
         {
             nextTile = nextPath;
             StopAllCoroutines();
-            StartCoroutine(FollowPath()); 
+            StartCoroutine(FollowPath());
         }
         else
         {
             Debug.Log("PathNotFound: " + gameObject.name);
             enemyFound = false;
-            findEnemyAndTrace();
+            followingPath = false;
         }
     }
 
@@ -49,20 +55,24 @@ public class UnitController : MonoBehaviour
         TileController currentWaypoint = nextTile;
         followingPath = true;
 
-        while (true)
+
+        if (currentWaypoint.tileState != Types.TileState.Block)
         {
-            if (transform.position == currentWaypoint.getLocation())
-            {
-                yield return new WaitForSeconds(0.2f);
-                break;
-            }
-
-            currentTile.tileState = Types.TileState.Open;
             currentWaypoint.tileState = Types.TileState.Block;
+            currentTile.tileState = Types.TileState.Open;
             currentTile = currentWaypoint;
+            while (true)
+            {
+                if (transform.position == currentWaypoint.getLocation())
+                {
+                    yield return new WaitForSeconds(0.2f);
+                    break;
+                }
 
-            transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.getLocation(), speed * Time.deltaTime);
-            yield return null;
+
+                transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.getLocation(), speed * Time.deltaTime);
+                yield return null;
+            }
         }
         enemyFound = false;
         followingPath = false;
@@ -87,7 +97,8 @@ public class UnitController : MonoBehaviour
         {
             if (gameManager.isOnBattle) // TODO
             {
-                //findEnemyAndTrace(); // 활성화 시키면 PathFinding에서 DEADLOCK 걸림 ==> static으로 접근하지 말고 객체마다 PathFinding 객체를 만들어야하나/**/
+                findEnemyAndTrace(); // 활성화 시키면 PathRequestManager에서 isProcessingPath가 DEADLOCK 걸림
+                //          ==> static으로 접근하지 말고 객체마다 PathFinding 객체를 만들어야하나/**/
             }
         }
     }
@@ -99,7 +110,6 @@ public class UnitController : MonoBehaviour
             RaycastHit hit = CastingTool.CastRay();
             if (hit.transform == transform)
             {
-                //TODO StatManager의 value를 쓰도록 바꿔야함
                 int value = statManager.getCost();
                 SaleManager.AlterVisible();
                 SaleManager.AlterValue(value);
@@ -207,14 +217,30 @@ public class UnitController : MonoBehaviour
                 targetTile = enemy.GetComponent<UnitController>().currentTile;
             }
         }
-
+        if (!isOnRange)
+        {
+            int distance = getDistanceCost(currentTile, targetTile);
+            int range = statManager.unitStat.attackRange;
+            if (distance <= range)
+            {
+                isOnRange = true;
+            }
+        }
         if (!followingPath && enemyFound && !isOnRange)
         {
             nextTile = null;
+            followingPath = true;
             PathRequestManager.RequestPath(currentTile, targetTile, OnPathFound);
+        } 
+        else if (!followingPath && enemyFound && isOnRange)
+        {
+            Attack();
         }
     }
+    public void Attack()
+    {
 
+    }
     private void MovingFailure(bool isMovingSuccessful)
     {
         if (!isMovingSuccessful)
@@ -269,5 +295,10 @@ public class UnitController : MonoBehaviour
                 currentTile = hit.collider.transform.GetComponent<TileController>();
             }
         }
+    }
+    int getDistanceCost(TileController TileA, TileController TileB)
+    {
+        int Dist = (int)Mathf.Abs(Vector3.Distance(TileA.transform.position, TileB.transform.position));
+        return Dist;
     }
 }

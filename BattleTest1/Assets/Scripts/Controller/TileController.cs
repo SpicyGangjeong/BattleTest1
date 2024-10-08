@@ -63,4 +63,13 @@ public class TileController : MonoBehaviour
         MaterialTools.SetTransparency(halo.transform, value);
         MaterialTools.SetTransparency(haloCenter.transform, value);
     }
+    //public override bool Equals(object obj)
+    //{
+    //    if (obj == this) return true;
+    //    if (obj is null || obj.GetType() != this.GetType()) return false;
+    //    TileController other = (TileController)obj;
+    //    getCoordinate(out int this_X, out int this_Y);
+    //    other.getCoordinate(out int other_X, out int other_Y);
+    //    return this_X == other_X && this_Y == other_Y;
+    //}
 }
