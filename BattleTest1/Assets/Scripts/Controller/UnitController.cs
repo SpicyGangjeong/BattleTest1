@@ -18,6 +18,7 @@ public class UnitController : MonoBehaviour
     float speed = 1;
     int targetIndex;
     public StatManager statManager;
+    public PathFinding pathFinding;
     [SerializeField]
     public bool isAlly = true;
     public TileController nextTile;
@@ -25,6 +26,7 @@ public class UnitController : MonoBehaviour
     void Start()
     {
         statManager = transform.GetComponent<StatManager>();
+        pathFinding = new PathFinding();
         setCurrentTile();
     }
 
@@ -56,9 +58,9 @@ public class UnitController : MonoBehaviour
         followingPath = true;
 
 
-        if (currentWaypoint.tileState != Types.TileState.Block)
+        if (currentWaypoint.tileState == Types.TileState.Open)
         {
-            currentWaypoint.tileState = Types.TileState.Block;
+            currentWaypoint.tileState = Types.TileState.Object;
             currentTile.tileState = Types.TileState.Open;
             currentTile = currentWaypoint;
             while (true)
@@ -206,7 +208,7 @@ public class UnitController : MonoBehaviour
 
     private void findEnemyAndTrace()
     {
-        if (!enemyFound)
+        if (!enemyFound) //TODO: 매번 이동이 끝나고 가까운 유닛찾기 다시 해줘야함
         {
             enemy = null;
             targetTile = null;
@@ -230,7 +232,7 @@ public class UnitController : MonoBehaviour
         {
             nextTile = null;
             followingPath = true;
-            PathRequestManager.RequestPath(currentTile, targetTile, OnPathFound);
+            pathFinding.RequestPath(currentTile, targetTile, OnPathFound);
         } 
         else if (!followingPath && enemyFound && isOnRange)
         {

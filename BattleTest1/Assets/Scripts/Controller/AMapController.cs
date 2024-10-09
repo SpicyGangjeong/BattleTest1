@@ -11,9 +11,19 @@ public class AMapController : MonoBehaviour
     public float tileRadius;
     public static GameObject[,] tiles;
     public List<TileController> path;
+
+    static AMapController instance;
     [SerializeField]
     public static GameObject unitContainer;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+    public static AMapController GetAMapController()
+    {
+        return instance;
+    }
     void Start()
     {
         unitContainer = Instantiate(Resources.Load<GameObject>("Prefabs/BattleScene/UnitsContainer"));

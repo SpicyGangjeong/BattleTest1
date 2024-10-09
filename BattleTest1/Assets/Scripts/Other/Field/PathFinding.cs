@@ -2,24 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class PathFinding : MonoBehaviour
+public class PathFinding
 {
-    PathRequestManager requestManager;
     AMapController map;
-    private void Awake()
+    UnityAction<TileController, bool> callback;
+    public PathFinding()
     {
-        requestManager = GetComponent<PathRequestManager>();
-        map = transform.parent.Find("Map").GetComponent<AMapController>();
+        map = AMapController.GetAMapController();
+    }
+    // 길찾기 요청
+    public void RequestPath(TileController pathStart, TileController pathEnd, UnityAction<TileController, bool> callback)
+    {
+        this.callback = callback;
+        FindPath(pathStart, pathEnd);
     }
 
-    //PathRequestManager에서의 현재 길찾기 요청을 시작하는 함수
-    public void StartFindPath(TileController startTile, TileController targetTile)
-    {
-        StartCoroutine(FindPath(startTile, targetTile));
-    }
-
-    IEnumerator FindPath(TileController sTile, TileController tTile)
+    public void FindPath(TileController sTile, TileController tTile)
     {
         TileController objectiveTile = null;
 
@@ -87,8 +87,7 @@ public class PathFinding : MonoBehaviour
             objectiveTile = RetracePath(startTile, endTile); // 경로를 추적
         }
         //노드들의 좌표를 담은 waypoints와 성공여부를 매니저함수에게 알려준다
-        requestManager.FinishedProcessingPath(objectiveTile, pathSuccess);
-        yield return null;
+        callback(objectiveTile, pathSuccess);
     }
 
 
@@ -113,5 +112,4 @@ public class PathFinding : MonoBehaviour
         int Dist = (int)Mathf.Abs(Vector3.Distance(TileA.refTile.transform.position, TileB.refTile.transform.position));
         return Dist;
     }
-
 }
