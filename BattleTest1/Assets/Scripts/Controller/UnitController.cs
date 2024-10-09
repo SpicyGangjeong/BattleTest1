@@ -56,9 +56,9 @@ public class UnitController : MonoBehaviour
         followingPath = true;
 
 
-        if (currentWaypoint.tileState != Types.TileState.Block)
+        if (currentWaypoint.tileState == Types.TileState.Open)
         {
-            currentWaypoint.tileState = Types.TileState.Block;
+            currentWaypoint.tileState = Types.TileState.Object;
             currentTile.tileState = Types.TileState.Open;
             currentTile = currentWaypoint;
             while (true)
@@ -84,21 +84,20 @@ public class UnitController : MonoBehaviour
         // Moving Inputs
         if (isAlly) 
         {
-            if (gameManager.isOnBattle) // TODO
+            if (gameManager.isOnBattle)
             {
-                findEnemyAndTrace(); // 비활성화 시키면 아군 이동 안하고 적이 정상적으로 접근함
+                findEnemyAndTrace();
             }
             else
             {
                 HandleMouseInput();
             }
         }
-        else // 비활성화 시키면 적 이동안하고 정상적으로 접근함.
+        else
         {
-            if (gameManager.isOnBattle) // TODO
+            if (gameManager.isOnBattle)
             {
-                findEnemyAndTrace(); // 활성화 시키면 PathRequestManager에서 isProcessingPath가 DEADLOCK 걸림
-                //          ==> static으로 접근하지 말고 객체마다 PathFinding 객체를 만들어야하나/**/
+                findEnemyAndTrace();
             }
         }
     }
@@ -210,7 +209,7 @@ public class UnitController : MonoBehaviour
         {
             enemy = null;
             targetTile = null;
-            enemy = FindNearestEnemy();
+            enemy = FindNearestEnemy(); //TODO: 이동하고(공격하고) 매번 가까운 확인해줘야함
             if (enemy != null)
             {
                 enemyFound = true;
@@ -250,7 +249,7 @@ public class UnitController : MonoBehaviour
         }
     }
 
-    public GameObject FindNearestEnemy() // 적이 아군 찾는것도 해야함
+    public GameObject FindNearestEnemy()
     {
         float distance = float.MaxValue;
         GameObject nearestEnemy = null;

@@ -64,7 +64,10 @@ public class PathFinding : MonoBehaviour
                     // 탐색이 끝난목록에 있는 경우는 스킵
                     if (closedList.Contains(neighbour))
                         continue;
-
+                    if (neighbour.refTile.tileState == Types.TileState.Object && !neighbour.Equals(endTile)) // 오브젝트 타일인데, 목표타일이 아니면 스킵
+                    {
+                        continue;
+                    }
                     float newMovementCost_ToNeighbour = currentTile.gCost + getDistanceCost(currentTile, neighbour);
                     if (newMovementCost_ToNeighbour < neighbour.gCost) // 새로운 코스트가 기존 코스트보다 낮으면? 넣고 아니면 스킵
                     {

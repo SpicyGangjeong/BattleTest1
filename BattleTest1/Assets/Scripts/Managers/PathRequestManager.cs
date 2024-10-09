@@ -33,7 +33,7 @@ public class PathRequestManager : MonoBehaviour
         if (!isProcessingPath && pathRequestQueue.Count > 0) // 큐에 남은 작업이 있고, 길찾기 프로세스가 실행중이지 않을 때 
         {
             currentPathRequest = pathRequestQueue.Dequeue(); // 큐에 작업을 빼고 
-            isProcessingPath = true; // 길찾기 플레그를 세우고 //TODO: DEADLOCK
+            isProcessingPath = true; // 길찾기 플레그를 세우고
             pathFinding.StartFindPath(currentPathRequest.pathStart, currentPathRequest.pathEnd); // 길찾기를 시작.
         }
     }
