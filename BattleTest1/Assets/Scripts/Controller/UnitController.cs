@@ -21,10 +21,13 @@ public class UnitController : MonoBehaviour
     [SerializeField]
     public bool isAlly = true;
     public TileController nextTile;
+    Animator animator;
 
     void Start()
     {
         statManager = transform.GetComponent<StatManager>();
+        animator = GetComponent<Animator>();
+
         setCurrentTile();
     }
 
@@ -55,7 +58,9 @@ public class UnitController : MonoBehaviour
         TileController currentWaypoint = nextTile;
         followingPath = true;
 
-
+        Vector3 vector = currentWaypoint.getLocation() - transform.position;
+        transform.rotation = Quaternion.LookRotation(vector).normalized;
+        animator.Play("RUN");
         if (currentWaypoint.tileState == Types.TileState.Open)
         {
             currentWaypoint.tileState = Types.TileState.Object;
@@ -74,6 +79,9 @@ public class UnitController : MonoBehaviour
                 yield return null;
             }
         }
+
+        transform.LookAt(enemy.transform.position);
+
         enemyFound = false;
         followingPath = false;
         targetTile = null;
@@ -209,7 +217,7 @@ public class UnitController : MonoBehaviour
         {
             enemy = null;
             targetTile = null;
-            enemy = FindNearestEnemy(); //TODO: 이동하고(공격하고) 매번 가까운 확인해줘야함
+            enemy = FindNearestEnemy(); //TODO: 이동하고(공격하고) 매번 가까운 적 확인해줘야함
             if (enemy != null)
             {
                 enemyFound = true;
@@ -233,12 +241,12 @@ public class UnitController : MonoBehaviour
         } 
         else if (!followingPath && enemyFound && isOnRange)
         {
-            Attack();
+            Attack(enemy);
         }
     }
-    public void Attack()
+    public void Attack(GameObject enemy)
     {
-
+        animator.Play("ATTACK");
     }
     private void MovingFailure(bool isMovingSuccessful)
     {

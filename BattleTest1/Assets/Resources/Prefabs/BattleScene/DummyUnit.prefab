@@ -1595,6 +1595,7 @@ GameObject:
   - component: {fileID: 3981776598528414875}
   - component: {fileID: 6609428856781693460}
   - component: {fileID: 6609428856781693461}
+  - component: {fileID: 3112002710348836246}
   m_Layer: 0
   m_Name: DummyUnit
   m_TagString: Player
@@ -1673,13 +1674,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   draggable: 0
-  isOnBattle: 0
+  enemyFound: 0
+  followingPath: 0
+  isOnRange: 0
   currentTile: {fileID: 0}
   targetTile: {fileID: 0}
-  target: {fileID: 0}
-  startObject: {fileID: 0}
-  destObject: {fileID: 0}
+  enemy: {fileID: 0}
   statManager: {fileID: 0}
+  isAlly: 1
+  nextTile: {fileID: 0}
 --- !u!114 &6609428856781693461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1715,6 +1718,27 @@ MonoBehaviour:
     criticalMagnification: 0
     meleeSpeed: 0
     moveSpeed: 0
+--- !u!95 &3112002710348836246
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6609428856781693459}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 417a287abb2cab94889f1f1ddd91f928, type: 3}
+  m_Controller: {fileID: 9100000, guid: d9a337f8588ba91429c2115bf59ae016, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6609428856835287234
 GameObject:
   m_ObjectHideFlags: 0

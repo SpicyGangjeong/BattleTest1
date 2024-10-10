@@ -1,0 +1,416 @@
+Using pre-set license
+Built from '2021.3/staging' branch; Version is '2021.3.26f1 (a16dc32e0ff2) revision 10579395'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22631) 64bit Core' Language: 'ko' Physical Memory: 32581 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.3.26f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+C:/Users/kimnuri/Documents/GitHub/BattleTest1/BattleTest1
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+54039
+Successfully changed project path to: C:/Users/kimnuri/Documents/GitHub/BattleTest1/BattleTest1
+C:/Users/kimnuri/Documents/GitHub/BattleTest1/BattleTest1
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [47552] Host "[IP] 192.168.0.2 [Port] 0 [Flags] 2 [Guid] 1641328116 [EditorId] 1641328116 [Version] 1048832 [Id] WindowsEditor(7,Cforme) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [47552] Host "[IP] 192.168.0.2 [Port] 0 [Flags] 2 [Guid] 1641328116 [EditorId] 1641328116 [Version] 1048832 [Id] WindowsEditor(7,Cforme) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 98.99 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.26f1 (a16dc32e0ff2)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.26f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/kimnuri/Documents/GitHub/BattleTest1/BattleTest1/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3080 (ID=0x2216)
+    Vendor:   NVIDIA
+    VRAM:     10053 MB
+    Driver:   31.0.15.5186
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.26f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.26f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.26f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56880
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.26f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.26f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.013874 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 85.07 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.595 seconds
+Domain Reload Profiling:
+	ReloadAssembly (595ms)
+		BeginReloadAssembly (113ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (381ms)
+			LoadAssemblies (110ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (91ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (20ms)
+			SetupLoadedEditorAssemblies (224ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (85ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (86ms)
+				ProcessInitializeOnLoadMethodAttributes (41ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.013965 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\kimnuri\Documents\GitHub\BattleTest1\BattleTest1\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\kimnuri\Documents\GitHub\BattleTest1\BattleTest1\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 90.81 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.469 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1470ms)
+		BeginReloadAssembly (114ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (14ms)
+		EndReloadAssembly (1266ms)
+			LoadAssemblies (133ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (243ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (65ms)
+			SetupLoadedEditorAssemblies (810ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (91ms)
+				BeforeProcessingInitializeOnLoad (107ms)
+				ProcessInitializeOnLoadAttributes (412ms)
+				ProcessInitializeOnLoadMethodAttributes (179ms)
+				AfterProcessingInitializeOnLoad (14ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (11ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 3.33 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6370 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 54 unused Assets / (3.8 MB). Loaded Objects now: 6840.
+Memory consumption went from 305.8 MB to 302.0 MB.
+Total: 10.439500 ms (FindLiveObjects: 0.741300 ms CreateObjectMapping: 0.755300 ms MarkObjects: 6.867500 ms  DeleteObjects: 2.072900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 23362.316907 seconds.
+  path: Assets/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE
+  artifactKey: Guid(b1c9ce867e55e6b489b0360147f7272c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE using Guid(b1c9ce867e55e6b489b0360147f7272c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8132ad064c6c7af77f632a88e44f9d76') in 0.088085 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.828851 seconds.
+  path: Assets/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations
+  artifactKey: Guid(333a26b651c0a304f8ec5288c2dc61b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations using Guid(333a26b651c0a304f8ec5288c2dc61b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0dde3f8a00c0dc1d91e6d3a543d81e05') in 0.003173 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.461698 seconds.
+  path: Assets/Tools/ExplosiveLLC 1
+  artifactKey: Guid(fc16f04a62b69b347ba7c3692a51e45a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC 1 using Guid(fc16f04a62b69b347ba7c3692a51e45a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '442ca24c38aae1ae0361eb05695ae129') in 0.003381 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 30.591834 seconds.
+  path: Assets/Tools/ExplosiveLLC/Warrior Pack Bundle 2 FREE
+  artifactKey: Guid(c2f5fce71fe4a0c43a0e8e1d09e508bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/Warrior Pack Bundle 2 FREE using Guid(c2f5fce71fe4a0c43a0e8e1d09e508bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf77e66f75ab816447d40dd14740ca4f') in 0.002773 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.627467 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animation Controller
+  artifactKey: Guid(b4e81f4f26050804789baf3a083c99e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animation Controller using Guid(b4e81f4f26050804789baf3a083c99e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e956b5cca407492cbbc2a21627b4e95') in 0.002644 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.237156 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animation Controller/RPG-Character-Animation-Controller.controller
+  artifactKey: Guid(7ff0cf27ed8e9684b9bdd381bab1f846) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animation Controller/RPG-Character-Animation-Controller.controller using Guid(7ff0cf27ed8e9684b9bdd381bab1f846) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '952fa4e1b8d718097ec4e84bf1912d6e') in 0.194350 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8274.023252 seconds.
+  path: Assets/Resources/New Folder
+  artifactKey: Guid(8bc1bd345e561214e9fc4952b80754a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/New Folder using Guid(8bc1bd345e561214e9fc4952b80754a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2736054df7e6d9e54bd6fc16cd5a54c1') in 0.007799 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 12.591266 seconds.
+  path: Assets/Resources/Animator
+  artifactKey: Guid(8bc1bd345e561214e9fc4952b80754a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Animator using Guid(8bc1bd345e561214e9fc4952b80754a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e451486ad395da99d25bf24c837c2bf') in 0.003874 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.210223 seconds.
+  path: Assets/Resources/Animation Controller
+  artifactKey: Guid(8bc1bd345e561214e9fc4952b80754a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Animation Controller using Guid(8bc1bd345e561214e9fc4952b80754a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '099285942b047b523fc2ad7c1ae626b8') in 0.002631 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 483.988549 seconds.
+  path: Assets/Resources/Animation Controller/New Animator Controller.controller
+  artifactKey: Guid(d9a337f8588ba91429c2115bf59ae016) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Animation Controller/New Animator Controller.controller using Guid(d9a337f8588ba91429c2115bf59ae016) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea4b6c8a365ab42678bffccf64070d8d') in 0.011660 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 15.279214 seconds.
+  path: Assets/Resources/Animation Controller/Attack.controller
+  artifactKey: Guid(d9a337f8588ba91429c2115bf59ae016) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Animation Controller/Attack.controller using Guid(d9a337f8588ba91429c2115bf59ae016) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a79eeeaa14011c4e0c38d6a45f3b79a') in 0.003637 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 822.926604 seconds.
+  path: Assets/Resources/Animation Controller/Animation_Controller_Attack_Basic.controller
+  artifactKey: Guid(d9a337f8588ba91429c2115bf59ae016) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Animation Controller/Animation_Controller_Attack_Basic.controller using Guid(d9a337f8588ba91429c2115bf59ae016) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f60f7cfa40128b455fe1a05d4a64274c') in 0.004308 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.904382 seconds.
+  path: Assets/Resources/Animation Controller/Attack_Basic.controller
+  artifactKey: Guid(d9a337f8588ba91429c2115bf59ae016) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Animation Controller/Attack_Basic.controller using Guid(d9a337f8588ba91429c2115bf59ae016) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c17cbdf7a82cb3c4036758a1db10e6a1') in 0.004138 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1187.149598 seconds.
+  path: Assets/Tools/ExplosiveLLC/Warrior Pack Bundle 2 FREE/Knight Warrior Mecanim Animation Pack/Animation Controller/Knight Warrior Animation Controller.controller
+  artifactKey: Guid(5fbed9cae3571aa4f8273283e531893a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/Warrior Pack Bundle 2 FREE/Knight Warrior Mecanim Animation Pack/Animation Controller/Knight Warrior Animation Controller.controller using Guid(5fbed9cae3571aa4f8273283e531893a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ea28f82511ccfba081bbde1818c8939') in 0.015516 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 16.162991 seconds.
+  path: Assets/Tools/ExplosiveLLC/Warrior Pack Bundle 2 FREE/Knight Warrior Mecanim Animation Pack/Characters/Knight.FBX
+  artifactKey: Guid(417a287abb2cab94889f1f1ddd91f928) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/Warrior Pack Bundle 2 FREE/Knight Warrior Mecanim Animation Pack/Characters/Knight.FBX using Guid(417a287abb2cab94889f1f1ddd91f928) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b53a93df176afd3686871cc878b9a57a') in 1.693639 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 23.097253 seconds.
+  path: Assets/Resources/Prefabs/BattleScene/DummyUnit.prefab
+  artifactKey: Guid(2537a5dc64ad3ca48a05365b91b2cbf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/BattleScene/DummyUnit.prefab using Guid(2537a5dc64ad3ca48a05365b91b2cbf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a05795dbd500448e17915baabe51883b') in 0.100229 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 315.380340 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword
+  artifactKey: Guid(ce1172405a7eec843a79c29478d193e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword using Guid(ce1172405a7eec843a79c29478d193e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8e78f790dc26dac31a7903865c9dfc3') in 0.003311 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.103321 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack1.FBX
+  artifactKey: Guid(dce280ced5e006c4cb0eb0fab2f51b75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack1.FBX using Guid(dce280ced5e006c4cb0eb0fab2f51b75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07e32d933a5e2f1ee7993bad73239ab6') in 0.007668 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.001228 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack3.FBX
+  artifactKey: Guid(018ce46eeecfeae4abb8016f2c6841ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack3.FBX using Guid(018ce46eeecfeae4abb8016f2c6841ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea273d6ef2fba973e61f75b995f61c5e') in 0.007461 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack4.FBX
+  artifactKey: Guid(cdd2643e8053d5b419629acf98510a71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack4.FBX using Guid(cdd2643e8053d5b419629acf98510a71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd921f1893d36a8a5a7d2583fd17fd1f9') in 0.006923 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack6.FBX
+  artifactKey: Guid(c9cdccfb9d6cfef4d9992105a94b5d86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack6.FBX using Guid(c9cdccfb9d6cfef4d9992105a94b5d86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffb95a26240b52fadad1fc37fb5d9c7c') in 0.007133 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.017276 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack8.FBX
+  artifactKey: Guid(05576006da3e02b49b96abc065d9f607) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack8.FBX using Guid(05576006da3e02b49b96abc065d9f607) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a9f6e8314506452a510ed1ffc2ef9f6') in 0.008342 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack9.FBX
+  artifactKey: Guid(06e24acb759a2ac4c965d56b0101f8ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack9.FBX using Guid(06e24acb759a2ac4c965d56b0101f8ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ef181a7d9ad546df5784ce822369e4d') in 0.008460 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack11.FBX
+  artifactKey: Guid(807a4f9cdadaafe4491d43653dfab0c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack11.FBX using Guid(807a4f9cdadaafe4491d43653dfab0c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93a6e76646633370ebaf1991e0437578') in 0.007807 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.010245 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-DiveRoll-Forward1.max.FBX
+  artifactKey: Guid(6c53184d9a4fe38429cf4aac4a3979d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-DiveRoll-Forward1.max.FBX using Guid(6c53184d9a4fe38429cf4aac4a3979d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20e91a0b14e89e15881cfd04958d70e6') in 0.009145 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-GetHit-B1.FBX
+  artifactKey: Guid(c4a6316ca6c9fdc46bb89081e20406a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-GetHit-B1.FBX using Guid(c4a6316ca6c9fdc46bb89081e20406a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aec44eb9dcf40e8f08f2e1e68dbd701e') in 0.007619 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-GetHit-F2.FBX
+  artifactKey: Guid(f8cbd01bd5b649048bf365e4ece13d69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-GetHit-F2.FBX using Guid(f8cbd01bd5b649048bf365e4ece13d69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a550f5084611752d3eb11ea3be2b6fe9') in 0.007869 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-GetHit-L1.FBX
+  artifactKey: Guid(0dd762bba3f94304ba04bda41e983fd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-GetHit-L1.FBX using Guid(0dd762bba3f94304ba04bda41e983fd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '419ce22f1304a02b6f8f31609933d901') in 0.007321 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Getup1.FBX
+  artifactKey: Guid(d63c8b6f3173d5e4f94e4df99263a5bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Getup1.FBX using Guid(d63c8b6f3173d5e4f94e4df99263a5bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd79936a79ba3a283fdf0a0b6ab6b7dc1') in 0.013664 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Jump-Flip.FBX
+  artifactKey: Guid(806ec0312335dcd4aa59baadbf13ff9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Jump-Flip.FBX using Guid(806ec0312335dcd4aa59baadbf13ff9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ce71801c0a2e8a0fc33199ee6e3f13a') in 0.008124 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Idle.FBX
+  artifactKey: Guid(8370b4128ccb08c4a8944d3f0d66cebc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Idle.FBX using Guid(8370b4128ccb08c4a8944d3f0d66cebc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14d52253096bca1d0ef7ab7e5f8d670f') in 0.009600 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Knockback-Back2.FBX
+  artifactKey: Guid(d66336446112a1942a204cd1780bc422) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Knockback-Back2.FBX using Guid(d66336446112a1942a204cd1780bc422) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '934cbc14500e09c2bf5b35fc8bd03bff') in 0.008665 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000067 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Idle-Static.FBX
+  artifactKey: Guid(d92b320e0a3d752489714ffe3c1b7f13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Idle-Static.FBX using Guid(d92b320e0a3d752489714ffe3c1b7f13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cac453aef3047ca273f027dffbb6a54d') in 0.009177 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Jump.FBX
+  artifactKey: Guid(afd3b10eb71eaf54bb564f6cc703f2cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Jump.FBX using Guid(afd3b10eb71eaf54bb564f6cc703f2cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2558e2cbf503fd4ef4f2d7c5fef81703') in 0.007547 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack5.FBX
+  artifactKey: Guid(04cb27dc01c081446ba2c02f2761f01d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack5.FBX using Guid(04cb27dc01c081446ba2c02f2761f01d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'edc626d4adc87dc292f01e2f5e11886c') in 0.008443 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-GetHit-R1.FBX
+  artifactKey: Guid(f8f52c7095ad58f4493880a61c998ea1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-GetHit-R1.FBX using Guid(f8f52c7095ad58f4493880a61c998ea1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab31b129cafe9708d6b0be863ac35a0c') in 0.008146 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack7.FBX
+  artifactKey: Guid(96ed5e4a6dc56fe4c9c2de75fc8a077c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack7.FBX using Guid(96ed5e4a6dc56fe4c9c2de75fc8a077c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc19d38759a6879cd488ce0c0b29952f') in 0.008115 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Fall.FBX
+  artifactKey: Guid(af325fd4fbf92f0458ca548353bddf90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Fall.FBX using Guid(af325fd4fbf92f0458ca548353bddf90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5efa031310d030c086776b343f883de5') in 0.008949 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-GetHit-F1.FBX
+  artifactKey: Guid(861c5aaef9829104d9122fa96811dfb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-GetHit-F1.FBX using Guid(861c5aaef9829104d9122fa96811dfb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a58f1fde048547deb781760531fb94ee') in 0.007330 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Knockback-Back1.FBX
+  artifactKey: Guid(03a1982862fcaba4db62d74a5596d8fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Knockback-Back1.FBX using Guid(03a1982862fcaba4db62d74a5596d8fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2ac690cc3c90b83fe1ac62b9879d95b') in 0.007763 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack10.FBX
+  artifactKey: Guid(5354b4f390c868842b96d7c4c201bdf8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tools/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Attack10.FBX using Guid(5354b4f390c868842b96d7c4c201bdf8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '878ccce4f7f37bdcb8df9d83384dc2d3') in 0.009496 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
