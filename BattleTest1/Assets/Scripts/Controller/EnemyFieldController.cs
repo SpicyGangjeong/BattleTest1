@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using static Types;
 
 public class EnemyFieldController : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class EnemyFieldController : MonoBehaviour
     public GameObject[,] enemyField = new GameObject[7,4];
     void Start()
     {
+        TextAsset jsonData = Resources.Load<TextAsset>("Prefabs/BattleScene/unitStat");
         for (int y = 5; y < 9; y++) // 타일 배열 담기
         {
             for (int x = 1; x <= 7; x++)
@@ -24,6 +27,8 @@ public class EnemyFieldController : MonoBehaviour
             dummyUnit.transform.position = enemyField[i + 2, 1].GetComponent<TileController>().getLocation();
             dummyUnit.GetComponent<UnitController>().setCurrentTile();
             dummyUnit.GetComponent<UnitController>().isAlly = false;
+            dummyUnit.GetComponent<UnitController>().statManager = dummyUnit.GetComponent<StatManager>();
+            dummyUnit.GetComponent<UnitController>().statManager.setStats(JsonHandler.getStat(jsonData, 200));
         }
 
         UpdateEnemyList();

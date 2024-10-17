@@ -21,14 +21,21 @@ public class UnitController : MonoBehaviour
     [SerializeField]
     public bool isAlly = true;
     public TileController nextTile;
-    Animator animator;
-
+    Animator animator = null;
+    bool flag = true;
     void Start()
     {
         statManager = transform.GetComponent<StatManager>();
         animator = GetComponent<Animator>();
-
+        animator.enabled = false; //TODO 이 구문 없애고는 싶은데 없애면 ally가 안움직임
+        animator.enabled = true; // 아무래도 동적생성한 유닛은 컴포넌트 동작에 문제가 발생하는듯
         setCurrentTile();
+        StartCoroutine(InitializeAnimator());
+    }
+    IEnumerator InitializeAnimator()
+    {
+        yield return new WaitForEndOfFrame(); // 프레임 끝까지 대기
+        animator.Play("Idle"); // 기본 애니메이션 재생
     }
 
     private void OnPathFound(TileController nextPath, bool pathSuccessful)
@@ -81,7 +88,7 @@ public class UnitController : MonoBehaviour
         }
 
         transform.LookAt(enemy.transform.position);
-
+        animator.Play("IDLE");
         enemyFound = false;
         followingPath = false;
         targetTile = null;
@@ -90,7 +97,7 @@ public class UnitController : MonoBehaviour
     private void Update()
     {
         // Moving Inputs
-        if (isAlly) 
+        if (isAlly)
         {
             if (gameManager.isOnBattle)
             {
